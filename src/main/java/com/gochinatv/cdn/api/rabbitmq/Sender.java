@@ -13,8 +13,8 @@ public class Sender {
 			channel.exchangeDeclare(exchangeName, "direct", true);
 			String queueName = "test-queue";//channel.queueDeclare().getQueue();
 			channel.queueDeclare(queueName, true, false, false, null);
-			channel.queueBind(queueName, exchangeName, "*");
-			channel.basicPublish(exchangeName, "*", null, "hello world".getBytes());
+			channel.queueBind(queueName, exchangeName, "vrs.task.assign");
+			channel.basicPublish(exchangeName, "vrs.task.assign", null, "hello world".getBytes());
 			
 			
 			channel.close();
@@ -25,6 +25,8 @@ public class Sender {
 	}
 	
 	public static void main(String[] args) {
-		sendMessage();
+		for(int i=0;i<100;i++){
+			sendMessage();
+		}
 	}
 }

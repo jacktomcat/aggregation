@@ -17,7 +17,7 @@ public class Receiver {
 		try {
 		    Channel channel = conn.createChannel();
 			String exchangeName="test-channel";
-			String queueName = "test-queue";//channel.queueDeclare().getQueue();
+			String queueName = "vrs.task.assign";//channel.queueDeclare().getQueue();
 			channel.basicConsume(queueName, true, new carConsumer());
 			
 			channel.close();

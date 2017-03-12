@@ -12,10 +12,16 @@ static ConnectionFactory factory = null;
 	public static ConnectionFactory getConnectionFactory(){
 		if(factory==null){
 			factory = new ConnectionFactory();
-			factory.setUsername("zhuhh");
-			factory.setPassword("zhuhh");
+//			factory.setUsername("zhuhh");
+//			factory.setPassword("zhuhh");
+//			factory.setVirtualHost("/");
+//			factory.setHost("192.168.2.150");
+			
+			factory.setUsername("gochinatv");
+			factory.setPassword("vegovrs");
 			factory.setVirtualHost("/");
-			factory.setHost("192.168.2.150");
+			factory.setHost("123.57.8.102");
+			
 			factory.setPort(5672);
 		}
 		return factory;
@@ -34,4 +40,9 @@ static ConnectionFactory factory = null;
 		}
 		return conn;
 	}
+	
+	public static void main(String[] args) {
+		getConnection();
+	}
+	
 }
