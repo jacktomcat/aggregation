@@ -6,6 +6,7 @@ import java.util.Properties;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.TopicPartition;
 
 
 
@@ -26,6 +27,10 @@ public class KafkaConsumerTest {
 	         ConsumerRecords<String, String> records = consumer.poll(100);
 	         for (ConsumerRecord<String, String> record : records)
 	             System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
+	        
+	         //下面设置后，导致消费端重复消费，如果不指定offset那么消费之后默认移动offset的位置
+	         TopicPartition partition = new TopicPartition("my-topic", 0);
+	         consumer.seek(partition, 9911063);
 	     }
 	}
 	
