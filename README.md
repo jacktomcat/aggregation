@@ -1,8 +1,6 @@
 # aggregation
 聚合项目，大杂烩
 
-
-
 #### kafka
 ```
 创建topic并指定topic参数
@@ -14,6 +12,11 @@
 查看消息消费情况
 3、kafka-run-class.bat kafka.admin.ConsumerGroupCommand  --bootstrap-server localhost:9092  --describe --group kafka01
 ```
+
+#### rabbitmq
+
+#### elasticsearch
+
 
 #### TODO
 ##### 1、查看kafka的消费情况，消息积压情况等等./kafka-run-class.sh
