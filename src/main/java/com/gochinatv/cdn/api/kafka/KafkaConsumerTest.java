@@ -22,15 +22,15 @@ public class KafkaConsumerTest {
 	     props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 	     props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 	     KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
-	     consumer.subscribe(Arrays.asList("my-topic"));
+	     consumer.subscribe(Arrays.asList("spark-test"));
 	     while (true) {
 	         ConsumerRecords<String, String> records = consumer.poll(100);
 	         for (ConsumerRecord<String, String> record : records)
 	             System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
 	        
 	         //下面设置后，导致消费端重复消费，如果不指定offset那么消费之后默认移动offset的位置
-	         TopicPartition partition = new TopicPartition("my-topic", 0);
-	         consumer.seek(partition, 9911063);
+	         //TopicPartition partition = new TopicPartition("spark-test", 0);
+	         //consumer.seek(partition, 1952366);
 	     }
 	}
 	

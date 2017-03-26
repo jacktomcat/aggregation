@@ -22,13 +22,14 @@ public class KafkaProducerTest {
 
 		 Producer<String, String> producer = new KafkaProducer<>(props);
 		 
-//		 int i = 0;
-//		 while(true){
-//		     producer.send(new ProducerRecord<String, String>("my-topic", Integer.toString(i), Integer.toString(i)+"-jackjboss"));
-//		     i = i+1;
-//		 }
-		 producer.send(new ProducerRecord<String, String>("my-topic", Integer.toString(100), Integer.toString(100)+"-jackjboss"));
-		 producer.close();
+		 int i = 0;
+		 while(i<=1000){
+			 System.out.println("==============");
+		     producer.send(new ProducerRecord<String, String>("spark-test", Integer.toString(i), Integer.toString(i)+"-jackjboss"));
+		     i = i+1;
+		 }
+		 //producer.send(new ProducerRecord<String, String>("my-topic", Integer.toString(100), Integer.toString(100)+"-jackjboss"));
+		 //producer.close();
 	}
 	
 }
