@@ -32,10 +32,13 @@ public class MockTestData {
 		props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 		Producer<String, String> producer = new KafkaProducer<>(props);
 		
+		int i=1;
 		while(true){
+		  Thread.sleep(100L);
 		  MockTestData mtd = new MockTestData();
 		  String data = "{\"id\":\""+global_id.getAndIncrement()+"\",\"ts\":\""+mtd.getTimeNow()+"\",\"count\":\""+getCount()+"\",\"value\":\""+getValue()+"\",\"agreeid\":\""+getAgreeId()+"\"}";
-		  producer.send(new ProducerRecord<String, String>("streaming-click", data));
+		  producer.send(new ProducerRecord<String, String>("streaming-click", "key"+i, data));
+		  i++;
 		}
 	}
 	

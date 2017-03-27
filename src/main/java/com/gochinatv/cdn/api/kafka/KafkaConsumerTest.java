@@ -56,8 +56,8 @@ public class KafkaConsumerTest {
 	      */
 	     TopicPartition partition0 = new TopicPartition("spark-test", 0);
 	     TopicPartition partition1 = new TopicPartition("spark-test", 1);
-	     //TopicPartition partition2 = new TopicPartition("spark-test", 2);
-	     consumer.assign(Arrays.asList(partition0,partition1));
+	     TopicPartition partition2 = new TopicPartition("spark-test", 2);
+	     consumer.assign(Arrays.asList(partition0,partition1,partition2));
 
 	     while (true) {
 	         ConsumerRecords<String, String> records = consumer.poll(100);

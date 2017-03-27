@@ -35,14 +35,24 @@ public class KafkaProducerTest {
 
 		 Producer<String, String> producer = new KafkaProducer<>(props);
 		 int i = 0;
+		 
+		 //case 1:
 		 //没有任何分区，默认1个分区，发送消息
-//		 while(true){
-//		     producer.send(new ProducerRecord<String, String>("kafka-test", Integer.toString(i), Integer.toString(i)+"-jackjboss"));
-//		     System.out.println("================send============="+i);
-//		     i = i+1;
-//		 }
+        /* while(true){
+		     producer.send(new ProducerRecord<String, String>("kafka-test", Integer.toString(i), Integer.toString(i)+"-jackjboss"));
+		     System.out.println("================send============="+i);
+		     i = i+1;
+		 }*/
 		 
+		 //case 2
+		 //发送带时间戳的message
+		 /*producer.send(new ProducerRecord<String, String>("spark-test", 0, 1490608032358L, Integer.toString(100), Integer.toString(100)+"-jackjboss"));
+		 producer.send(new ProducerRecord<String, String>("spark-test", 1, 1490608031358L, Integer.toString(200), Integer.toString(200)+"-jackjboss"));
+		 producer.send(new ProducerRecord<String, String>("spark-test", 2, 1490608039358L, Integer.toString(300), Integer.toString(300)+"-jackjboss"));
+		 producer.flush();
+		 producer.close();*/
 		 
+		 //case 3
 		 //需要使用命令行创建topic并且指定分区数，同时发送消息至分区
 		 while(true){
 			 Thread.sleep(1000L);
@@ -53,6 +63,7 @@ public class KafkaProducerTest {
 		 }
 		 //producer.flush();
 		 //producer.close();
+		 
 	}
 	
 }
