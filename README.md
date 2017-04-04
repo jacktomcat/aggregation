@@ -11,12 +11,13 @@
 
 查看消息消费情况
 3、kafka-run-class.bat kafka.admin.ConsumerGroupCommand  --bootstrap-server localhost:9092  --describe --group kafka01
+
+4、使用工具查看消息剩余的消息 下面 --zk是指定了zookeeper所以监控的消费端必须是连接到zookeeper否则图形上显示没有激活的consumer
+java -cp KafkaOffsetMonitor-assembly-0.2.0.jar com.quantifind.kafka.offsetapp.OffsetGetterWeb --zk 192.168.2.150:2181 --port 8088 --refresh 10.seconds --retain 2.days
 ```
+
 
 #### rabbitmq
 
+###TODO
 #### elasticsearch
-
-
-#### TODO
-##### 1、查看kafka的消费情况，消息积压情况等等./kafka-run-class.sh
