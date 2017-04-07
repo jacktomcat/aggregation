@@ -22,7 +22,7 @@ public class MockTestData {
 	public static void main(String[] args) throws Exception {
 
 		Properties props = new Properties();
-		props.put("bootstrap.servers", "localhost:9092");
+		props.put("bootstrap.servers", "192.168.2.150:9092");
 		props.put("acks", "all");
 		props.put("retries", 3);
 		props.put("batch.size", 16384);
