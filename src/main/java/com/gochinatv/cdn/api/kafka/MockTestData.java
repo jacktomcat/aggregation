@@ -4,9 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicInteger;
-
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
 public class MockTestData {
@@ -24,36 +24,43 @@ public class MockTestData {
 		Properties props = new Properties();
 		props.put("bootstrap.servers", "localhost:9092");
 		props.put("acks", "all");
-		props.put("retries", 0);
+		props.put("retries", 3);
 		props.put("batch.size", 16384);
+		props.put("max.block.ms", 1000); //配置超时时间
 		props.put("linger.ms", 1);
 		props.put("buffer.memory", 33554432);
 		props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 		props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+
 		Producer<String, String> producer = new KafkaProducer<>(props);
 		
 		int i=1;
 		while(true){
-		  Thread.sleep(100L);
+		  Thread.sleep(200L);
 		  MockTestData mtd = new MockTestData();
-		  String data = "{\"id\":\""+global_id.getAndIncrement()+"\",\"ts\":\""+mtd.getTimeNow()+"\",\"count\":\""+getCount()+"\",\"value\":\""+getValue()+"\",\"agreeid\":\""+getAgreeId()+"\"}";
+		  String data = "{\"id\":\""+global_id.getAndIncrement()+"\",\"ts\":\""+mtd.getTimeNow()+"\",\"count\":\""+getCount()+"\",\"value\":\""+getValue()+"\",\"agreeId\":\""+getAgreeId()+"\"}";
+		  System.out.println(data);
 		  producer.send(new ProducerRecord<String, String>("streaming-click", "key"+i, data));
 		  i++;
+		  if(i==11)break;
 		}
+		
+		producer.flush();
+		producer.close();
 	}
 	
 	public static int getAgreeId(){
-		int random=(int) (Math.random()*1000+1);
+		int random=(int) (Math.random()*1+1);
 		return random;
 	}
 	
 	public static int getCount(){
-		int random=(int) (Math.random()*10+2);
+		int random=(int) (Math.random()*5+1);
 		return random;
 	}
 	
 	public static int getValue(){
-		int random=(int) (Math.random()*100+1);
+		int random=(int) (Math.random()*10+1);
 		return random;
 	}
 	
