@@ -18,6 +18,11 @@ java -cp KafkaOffsetMonitor-assembly-0.2.0.jar com.quantifind.kafka.offsetapp.Of
 http://localhost:8088/
 ```
 
+#### jdk1.7 NIO2 
++ 支持 walkFileTree、FileVisitor（遍历文件/目录） 参见：#com.gochinatv.cdn.api.file.JDK7FilesVisitor
++ 平台无关的文件系统访问支持（Path、Paths、Files）参见：http://blog.csdn.net/lirx_tech/article/details/51416672
++ 文件属性 参见：#java.nio.file.attribute ref: http://blog.csdn.net/lirx_tech/article/details/51428238
++ 监控文件变化 WatchService、WatchKey（监控文件变化）参见：#com.gochinatv.cdn.api.file.JDK7WatchFiles
 
 #### rabbitmq
 
