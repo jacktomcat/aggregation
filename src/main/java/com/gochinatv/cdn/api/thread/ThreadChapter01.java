@@ -1,21 +1,26 @@
 package com.gochinatv.cdn.api.thread;
 
+import java.util.HashMap;
+
+//一个主线程，一个car线程
 public class ThreadChapter01 {
    
-	String name = "";
+	HashMap<String,String> map = new HashMap<>();
+	
 	public static void main(String[] args) {
 		ThreadChapter01 chpater01 = new ThreadChapter01();
 		Thread thread = new Car(chpater01);
 		thread.start();
-		chpater01.getName();
+		chpater01.setMap();
 	}
 	
-	public void getName(){
+	public void setMap(){
 		try {
-			synchronized(name){
-				name = "zhangsan";
+			System.out.println("=============start main thread");
+			synchronized(map){
 				Thread.sleep(5000L);
-				System.out.println("=====synchronized====="+name);
+				map.put("name", "zhangsan");
+				System.out.println("main=====synchronized====="+map.get("name"));
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -34,9 +39,12 @@ class Car extends Thread{
 	@Override
 	public void run() {
 		try {
-			Thread.sleep(2000L);
-			chpater01.name="lisi";
-			System.out.println(chpater01.name);
+			System.out.println("=============start car thread");
+			synchronized (chpater01.map) {
+				Thread.sleep(2000L);
+				chpater01.map.put("name", "lishi");
+			}
+			System.out.println("car=====synchronized====="+chpater01.map.get("name"));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
