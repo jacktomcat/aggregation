@@ -67,7 +67,7 @@ public class MockTestData {
 		  }
 		  System.out.println(data);
 		  i++;
-		  if(i==3)break;
+		  if(i==4)break;
 		}
 		
 		producer.flush();
