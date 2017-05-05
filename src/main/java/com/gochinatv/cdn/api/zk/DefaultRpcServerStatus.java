@@ -22,18 +22,18 @@ public class DefaultRpcServerStatus implements RpcServerStatus {
 	private final static String ALARM_ZK_LEADER_DIR = "/aggregation/leader";
 	private final static String ALARM_ZK_LISTENER_DIR = "/aggregation/listener";
 	
-	public DefaultRpcServerStatus(CuratorClient curatorClient,int rpcStatus){
+	public DefaultRpcServerStatus(CuratorClient curatorClient){
 		this.curatorClient = curatorClient;
-		init(rpcStatus);
+		init();
 	}
 
-	public void init(int rpcStatus){
+	public void init(){
 		curatorClient.getClient().start();
-		initLeaderLatch(rpcStatus);
+		initLeaderLatch();
 	}
 	
-	private void initLeaderLatch(int rpcStatus){
-		leader = new LeaderLatch(curatorClient.getClient(), ALARM_ZK_LEADER_DIR + this.alarmZkPrefix, "client#"+rpcStatus);
+	private void initLeaderLatch(){
+		leader = new LeaderLatch(curatorClient.getClient(), ALARM_ZK_LEADER_DIR + this.alarmZkPrefix, "client#");
 		try {
 			leader.addListener(new LeaderLatchListener() {
                 @Override
@@ -91,8 +91,6 @@ public class DefaultRpcServerStatus implements RpcServerStatus {
 				{
 					logger.debug("node data change for path:"+path);
 					action.action();
-				}else{
-					System.out.println("leader========"+leader.getId());
 				}
 			}
 		});
@@ -103,11 +101,8 @@ public class DefaultRpcServerStatus implements RpcServerStatus {
 		return ALARM_ZK_LISTENER_DIR+alarmZkPrefix+"/"+key;
 	}
 	
-	
 	public void destory(){
 		
 	}
-	
-	
 	
 }
