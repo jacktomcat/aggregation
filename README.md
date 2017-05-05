@@ -26,5 +26,8 @@ http://localhost:8088/
 
 #### rabbitmq
 
+#### zk 多client选leader
++ 参考 com.gochinatv.cdn.api.zk  （ TestZK TestZK2  TestZK3  TestZK4相当于4个节点，启动之后选主）
+
 ###TODO
 #### elasticsearch

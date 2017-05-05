@@ -97,6 +97,10 @@ public class DefaultRpcServerStatus implements RpcServerStatus {
 		
 	}
 	
+	public LeaderLatch getLeader() {
+		return leader;
+	}
+
 	private String getZkPath(String key){
 		return ALARM_ZK_LISTENER_DIR+alarmZkPrefix+"/"+key;
 	}
