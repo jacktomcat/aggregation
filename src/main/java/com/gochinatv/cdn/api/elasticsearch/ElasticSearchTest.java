@@ -23,19 +23,19 @@ import org.elasticsearch.common.transport.InetSocketTransportAddress;
 
 public class ElasticSearchTest {
 
-	public static String host = "10.10.7.225";
-	public static String index = "vrs";
+	//public static String host = "10.10.7.225";
+	public static String index = "monitor";
 	public static String type = "video";
-	// public static String host="192.168.2.150";
+	public static String host="192.168.2.150";
 
 	public static void main(String[] args) {
 		// indexExists();
 		//index();
 		// get();
-		mutilGet();
+		//mutilGet();
 		// update();
 		// deleteDocument();
-		//deleteIndex();
+		deleteIndex();
 	}
 
 	public void admin() {
