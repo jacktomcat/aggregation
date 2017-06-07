@@ -29,8 +29,11 @@ http://localhost:8088/
 #### zk 多client选leader
 + 参考 com.gochinatv.cdn.api.zk  （ TestZK TestZK2  TestZK3  TestZK4相当于4个节点，启动之后选主）
 
+#### avro 序列化的几种实现方式
++ 参考 com.gochinatv.cdn.api.avro，src/main/resources/user.avsc
+
 #### elastic-job
-+ 分布式任务框架
++ 分布式任务框架 com.gochinatv.cdn.api.elasticjob
 
 ###TODO
 #### elasticsearch
