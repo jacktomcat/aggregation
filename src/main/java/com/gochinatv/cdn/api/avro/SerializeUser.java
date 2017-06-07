@@ -32,19 +32,15 @@ public class SerializeUser{
 		//指定schema  
 		dataFileWriter.create(User.getClassSchema(), diskFile);  
 		
-		User user = new User();  
-		user.setId(1);
-		user.setUserName("张三");
-		user.setAge(30);  
-		user.setPhone(null);
-		
-		dataFileWriter.append(user);  
-		dataFileWriter.fSync();//多次写入之后，可以调用fsync将数据同步写入磁盘(IO)通道 
-		user.setId(2);
-		user.setUserName("李四");  
-		user.setAge(34);
-		user.setPhone("13439259710");
-		dataFileWriter.append(user);  
+		for(int i=0;i<10000;i++){
+			User user = new User();  
+			user.setId(1);
+			user.setUserName("张三");
+			user.setAge(30);  
+			user.setPhone("13439259710");
+			dataFileWriter.append(user);  
+			dataFileWriter.fSync();//多次写入之后，可以调用fsync将数据同步写入磁盘(IO)通道 
+		}
 		dataFileWriter.close(); 
 		
 		

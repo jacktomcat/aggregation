@@ -35,19 +35,20 @@ public class SerializeUser3 {
 		InputStream inputStream = ClassLoader.getSystemResourceAsStream("user.avsc");  
 		Schema schema = new Schema.Parser().parse(inputStream);
 		
-		GenericRecord user = new GenericData.Record(schema);  
-		user.put("id",2);  
-		user.put("userName", "张三");  
-		user.put("age",30); 
-		user.put("phone", null);
-		
 		//序列化 到内存字节数组 
 		DatumWriter<GenericRecord> userDatumWriter = new SpecificDatumWriter<GenericRecord>(schema); 
 		
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		//BinaryEncoder binaryEncoder = EncoderFactory.get().directBinaryEncoder(outputStream, null);
 		BinaryEncoder binaryEncoder = EncoderFactory.get().binaryEncoder(outputStream, null);
-		userDatumWriter.write(user, binaryEncoder);
+		for(int i=0;i<10000;i++){
+			GenericRecord user = new GenericData.Record(schema);  
+			user.put("id",2);  
+			user.put("userName", "张三");  
+			user.put("age",30); 
+			user.put("phone", "13439259710");
+			userDatumWriter.write(user, binaryEncoder);
+		}
 		binaryEncoder.flush();//带缓冲区的binaryEncoder和直接directBinaryEncoder不一样，需要flush一下，否则字节数组没有数据
 		outputStream.flush();
 		outputStream.close();
@@ -61,6 +62,6 @@ public class SerializeUser3 {
 		GenericRecord u = userDatumReader.read(null, binaryDecoder);
 		User result = ((User)u);
 		String userName = result.getUserName().toString();
-		System.out.println(userName);
+		//System.out.println(userName);
 	}
 }
