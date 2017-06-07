@@ -26,6 +26,10 @@ http://localhost:8088/
 
 #### rabbitmq
 
+#### logback日志级别输出
++ com.gochinatv.cdn.api.logger
++ classpath:logback.xml
+
 #### zk 多client选leader
 + 参考 com.gochinatv.cdn.api.zk  （ TestZK TestZK2  TestZK3  TestZK4相当于4个节点，启动之后选主）
 
@@ -37,3 +41,4 @@ http://localhost:8088/
 
 ###TODO
 #### elasticsearch
+

@@ -28,7 +28,7 @@ public class ElasticLiteJobTest {
     private static LiteJobConfiguration createJobConfiguration() {
         // 创建作业配置
          
-        JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder("myDataFlowTest", "0 0/1 * * * ?", 3).shardingItemParameters("0=0,1=1,2=2").build();
+        JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder("myDataFlowTest", "0 0/5 * * * ?", 10).shardingItemParameters("0=0,1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9").build();
         DataflowJobConfiguration dataflowJobConfig = new DataflowJobConfiguration(coreConfig, JavaDataflowJob.class.getCanonicalName(), true);
         LiteJobConfiguration result = LiteJobConfiguration.newBuilder(dataflowJobConfig).build();
         return result;

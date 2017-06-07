@@ -1,0 +1,11 @@
+{
+    "namespace": "com.gochinatv.cdn.api.avro",
+    "type": "record",
+    "name": "User",
+    "fields": [
+        {"name": "id", "type": "int" },
+        {"name": "userName", "type": "string" },
+        {"name": "age", "type": "int" },
+        {"name": "phone", "type": [ "string", "null" ] }
+    ]
+}

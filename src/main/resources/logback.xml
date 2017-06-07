@@ -1,4 +1,5 @@
-<configuration scan="true">
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
     
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
@@ -9,19 +10,34 @@
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>/var/log/cdn-api/cdn-api.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>/var/log/cdn-api/cdn-api.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+			<fileNamePattern>/var/log/cdn-api/cdn-api.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 		</rollingPolicy>
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
 		</encoder>
 	</appender>
+	
+	<!-- 把 warn日志级别以上的单独输出到 error的log文件,方便以后查询 -->
+	<appender name="appenderError" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+        <file>/var/log/cdn-api/cdn-api-error.log</file>  
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/var/log/cdn-api/cdn-api-error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+        </rollingPolicy>
+	    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+	    </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">  
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>  
+        </encoder>  
+    </appender>
 
-	<root level="DEBUG">
+	<root level="INFO">
 	    <appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
+		<appender-ref ref="appenderError" />
 	</root>
 
-    <logger name="com.gochinatv.cdn.api" level="DEBUG" />
+    <logger name="com.gochinatv.cdn.api" level="INFO" />
 	<logger name="org.springframework" level="ERROR" />
 	<logger name="org.apache" level="ERROR" />
 
