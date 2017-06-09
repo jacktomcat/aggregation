@@ -4,9 +4,8 @@
     "name": "User",
     "fields": [
         {"name": "id", "type": "int" },
-        {"name": "userName", "type": "string"},
+        {"name": "userName", "type": "string","alias":"name"},
         {"name": "age", "type": "int" },
-        {"name": "phone", "type": [ "string", "null" ],"default":"110" },
-        {"name": "address", "type": "string" }
+        {"name": "phone", "type": [ "string", "null" ],"default":"110" }
     ]
 }

@@ -13,7 +13,7 @@ import kafka.consumer.SimpleConsumer;
 
 /**
  * 
- * @author zhuhuihui
+ * @author jack
  * 查看消费情况
  * kafka-run-class.bat kafka.admin.ConsumerGroupCommand  --bootstrap-server localhost:9092  --describe --group kafka01
  * @author zhuhh

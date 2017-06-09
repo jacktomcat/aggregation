@@ -23,7 +23,7 @@ import java.nio.file.WatchService;
  *   3) 我们都知道，操作系统上可以同时开启多个监控器，因此在Java程序中也不例外，上面的代码只是获得了一个监控器，你还可以用同样的代码同时获得多个监控器；
  *   4) 监控器其实就是一个后台线程，在后台监控文件变化所发出的信号，这里通过上述代码获得的监控器还只是一个刚刚初始化的线程，连就绪状态都没有进入，只是初始化而已；
  *   
- * @author zhuhuihui
+ * @author jack
  *
  */
 public class JDK7WatchFiles {

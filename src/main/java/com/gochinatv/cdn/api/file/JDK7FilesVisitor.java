@@ -20,7 +20,7 @@ import java.nio.file.attribute.BasicFileAttributes;
  *   4) 遍历行为控制器——FileVisitor：
  *        i. 它是一个接口，里面定义了4个方法用来指定当你访问一个节点之前、之中、之后、失败时应该采取什么行动；
  *        ii. 这个设计非常优雅和科学，毕竟你在遍历文件系统时想要做的事情无外乎发生在这几个时间点上，Java全部为你考虑好了，并搭好了框架！多么的贴心！！
- * @author zhuhuihui 下面为文件结构
+ * @author jack 下面为文件结构
  * file-visitor
  *	├── 2017
  *	│   ├── aaa.txt
@@ -52,7 +52,7 @@ public class JDK7FilesVisitor {
 
 /**
  * 递归访问指定的文件夹下面的目录，并提供了执行前、执行中、执行后、执行失败的的各种操作
- * @author zhuhuihui
+ * @author jack
  *
  */
 class CustomFileVisitor implements FileVisitor<Path>{

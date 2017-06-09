@@ -16,22 +16,23 @@ import org.apache.avro.io.EncoderFactory;
 import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.avro.specific.SpecificDatumWriter;
 
-
 /**
- * http://shift-alt-ctrl.iteye.com/blog/2217425
- * http://blog.csdn.net/caomiao2006/article/details/51588927
- * @author jack
+ * 第一种方式：
+ *引用jar包的形式，video.avsc 在jar中的 classpath下面的avro文件夹下，jar文件中并不用生成好的video类，而是用avsc
+ *文件映射
  *
  */
-public class SerializeUser3 {
+public class SerializeUser4 {
    
 	public static void main(String[] args) throws Exception {
 		
-		InputStream inputStream = ClassLoader.getSystemResourceAsStream("user.avsc");  
+		InputStream inputStream = ClassLoader.getSystemResourceAsStream("avro/video.avsc");  
 		Schema schema = new Schema.Parser().parse(inputStream);
+		
 		byte[] data = write(schema);
 		read(schema,data);
 	}
+	
 	
 	
 	/**
@@ -44,15 +45,14 @@ public class SerializeUser3 {
 		DatumWriter<GenericRecord> userDatumWriter = new SpecificDatumWriter<GenericRecord>(schema); 
 		
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		//BinaryEncoder binaryEncoder = EncoderFactory.get().directBinaryEncoder(outputStream, null);
 		BinaryEncoder binaryEncoder = EncoderFactory.get().binaryEncoder(outputStream, null);
 		for(int i=0;i<10000;i++){
-			GenericRecord user = new GenericData.Record(schema);  
-			user.put("id",2);  
-			user.put("userName", "张三" + i);  
-			user.put("age",30); 
-			user.put("phone", "13439259710");
-			userDatumWriter.write(user, binaryEncoder);
+			GenericRecord video = new GenericData.Record(schema);  
+			video.put("id",2);  
+			video.put("videoName", "爱情保卫战" + i); 
+			video.put("desc", "13439259710");
+			video.put("status",1); 
+			userDatumWriter.write(video, binaryEncoder);
 		}
 		binaryEncoder.flush();//带缓冲区的binaryEncoder和直接directBinaryEncoder不一样，需要flush一下，否则字节数组没有数据
 		outputStream.flush();
@@ -70,11 +70,13 @@ public class SerializeUser3 {
 	 */
 	public static void read(Schema schema,byte[] data) throws IOException{
 		DatumReader<GenericRecord> userDatumReader = new SpecificDatumReader<GenericRecord>(schema); 
-		//BinaryDecoder binaryDecoder = DecoderFactory.get().directBinaryDecoder(new ByteArrayInputStream(data), null);
 		BinaryDecoder binaryDecoder = DecoderFactory.get().binaryDecoder(new ByteArrayInputStream(data), null);
 		while(!binaryDecoder.isEnd()){
-			GenericRecord u = userDatumReader.read(null, binaryDecoder);
-			System.out.println(u.get("userName"));
+			GenericRecord record = userDatumReader.read(null, binaryDecoder);
+			String videoName = record.get("videoName").toString();
+			System.out.println(videoName);
 		}
 	}
+	
+	
 }

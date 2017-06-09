@@ -2,7 +2,7 @@ package com.gochinatv.cdn.api.jvm;
 
 /**
  * 
- * @author zhuhuihui
+ * @author jack
  * -Xms2m -Xmx2m -Xss160k -XX:+PrintGCDetails
  * java -X 非标准输出
  */
