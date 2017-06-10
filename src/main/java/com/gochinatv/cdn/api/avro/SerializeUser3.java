@@ -30,7 +30,7 @@ public class SerializeUser3 {
 		InputStream inputStream = ClassLoader.getSystemResourceAsStream("avro/user-encode.avsc");  
 		Schema schema = new Schema.Parser().parse(inputStream);
 		byte[] data = write(schema);
-		read(schema,data);
+		//read(schema,data);
 		
 		/**
 		 * 这里请注意：如果序列化和反序列化都是使用 user-encode.avsc 文件，那么在entity中不可以自己在
@@ -54,6 +54,7 @@ public class SerializeUser3 {
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		//BinaryEncoder binaryEncoder = EncoderFactory.get().directBinaryEncoder(outputStream, null);
 		BinaryEncoder binaryEncoder = EncoderFactory.get().binaryEncoder(outputStream, null);
+		long start = System.currentTimeMillis();
 		for(int i=0;i<10000;i++){
 			GenericRecord user = new GenericData.Record(schema);  
 			user.put("id",2);  
@@ -67,7 +68,7 @@ public class SerializeUser3 {
 		outputStream.flush();
 		outputStream.close();
 		byte[] data = outputStream.toByteArray();
-		System.out.println(data.length+"==");
+		System.out.println(data.length+"============耗时："+(System.currentTimeMillis()-start));
 		return data;
 	}
 	
