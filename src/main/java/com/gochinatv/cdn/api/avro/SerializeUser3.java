@@ -27,10 +27,18 @@ public class SerializeUser3 {
    
 	public static void main(String[] args) throws Exception {
 		
-		InputStream inputStream = ClassLoader.getSystemResourceAsStream("user.avsc");  
+		InputStream inputStream = ClassLoader.getSystemResourceAsStream("avro/user-encode.avsc");  
 		Schema schema = new Schema.Parser().parse(inputStream);
 		byte[] data = write(schema);
 		read(schema,data);
+		
+		/**
+		 * 这里请注意：如果序列化和反序列化都是使用 user-encode.avsc 文件，那么在entity中不可以自己在
+		 * 相同的包下（com.chsoft.datacollection.entity）面建立一个 User.java 的这个文件，除非是自己
+		 * java -jar avro-tools-1.8.1.jar compile schema user-encode.avsc .jar 把生成的拷贝到包下面，否则
+		 * 会报错，类转化异常 
+		 */
+		
 	}
 	
 	
@@ -51,7 +59,8 @@ public class SerializeUser3 {
 			user.put("id",2);  
 			user.put("userName", "张三" + i);  
 			user.put("age",30); 
-			user.put("phone", "13439259710");
+			user.put("phone", "13339259710");
+			user.put("address","北京市");
 			userDatumWriter.write(user, binaryEncoder);
 		}
 		binaryEncoder.flush();//带缓冲区的binaryEncoder和直接directBinaryEncoder不一样，需要flush一下，否则字节数组没有数据

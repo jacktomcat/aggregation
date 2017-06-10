@@ -31,12 +31,12 @@ public class SerializeUser2 {
 		File diskFile = new File("/Users/zhuhuihui/users.avro"); 
 		
 		//这里做兼容性测试，user.avsc定义文件中多了一个address属性
-		InputStream writeStream = ClassLoader.getSystemResourceAsStream("user.avsc");  
+		InputStream writeStream = ClassLoader.getSystemResourceAsStream("avro/user-encode.avsc");  
 		Schema writeSchema = new Schema.Parser().parse(writeStream);
 		write(writeSchema,diskFile);
 		
 		//解析的时候没有address属性，这里不会报错
-		InputStream readStream = ClassLoader.getSystemResourceAsStream("user-v2.avsc");  
+		InputStream readStream = ClassLoader.getSystemResourceAsStream("avro/user-decode.avsc");  
 		Schema readSchema = new Schema.Parser().parse(readStream);
 		read(readSchema,diskFile);
 	}

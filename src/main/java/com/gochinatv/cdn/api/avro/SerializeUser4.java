@@ -31,6 +31,13 @@ public class SerializeUser4 {
 		
 		byte[] data = write(schema);
 		read(schema,data);
+		
+		/**
+		 * 这里请注意：如果序列化和反序列化都是使用 video.avsc 文件，那么在entity中不可以自己在
+		 * 相同的包下（com.chsoft.datacollection.entity）面建立一个 Video.java 的这个文件，除非是自己
+		 * java -jar avro-tools-1.8.1.jar compile schema video.avsc .jar 把生成的拷贝到包下面，否则
+		 * 会报错，类转化异常 
+		 */
 	}
 	
 	
