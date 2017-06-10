@@ -20,6 +20,7 @@ import com.chsoft.datacollection.entity.User;
  * 3:把序列化的对象放入到 users.avro 磁盘文件中  没用使用任何的编码方式
  * @author jack
  *
+ *  参见  data-collection 项目中avsc的定义
  */
 public class SerializeUser{
    
@@ -29,6 +30,11 @@ public class SerializeUser{
 		File diskFile = new File("/Users/zhuhuihui/users.avro");  
 		write(diskFile);
 		read(diskFile);
+		
+		/***
+		 * 序列化的时候多实体中多一个字段，解析的时候少一个，这样是不会报错的，兼容老版本
+		 * 
+		 */
 	}
 	
 	/**
@@ -49,7 +55,8 @@ public class SerializeUser{
 			user.setId(1);
 			user.setUserName("张三");
 			user.setAge(30);  
-			user.setPhone("13439259710");
+			//user.setPhone("13439259710");
+			//user.setAddress("北京市");
 			dataFileWriter.append(user);  
 			dataFileWriter.fSync();//多次写入之后，可以调用fsync将数据同步写入磁盘(IO)通道 
 		}
@@ -75,6 +82,7 @@ public class SerializeUser{
 		    //next方法只是给_current对象的各个属性赋值，而不是重新new。  
 		    _current = dataFileReader.next(_current);  
 		    //toString方法被重写，将获得JSON格式  
+		    System.out.println(_current);  
 		    System.out.println(_current.getId()+":"+_current.getUserName());  
 		}  
 		dataFileReader.close(); 
