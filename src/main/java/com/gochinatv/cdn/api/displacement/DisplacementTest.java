@@ -29,7 +29,7 @@ public class DisplacementTest {
 		 System.out.println("删除权限====="+resultOr);  //15     0111|1000  = 1111(真真为真, 真假为真, 假假为假)
 		 
 		 
-		 //判断权限会用下面的形式来判断是否具有权限    
+		 //判断权限会用下面的形式来判断是否具有权限  
 		 int resultAnd = authority & search ;
 		 System.out.println("查询权限====="+resultAnd);//1          0111|0001  = 0001(真真为真, 真假为假, 假假为假)
 		 

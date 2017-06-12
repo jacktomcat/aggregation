@@ -42,6 +42,9 @@ http://localhost:8088/
 #### elastic-job
 + 分布式任务框架 com.gochinatv.cdn.api.elasticjob
 
+#### java位移判断是否包含权限
++ 参考   com.gochinatv.cdn.api.displacement.DisplacementTest
+
 ###TODO
 #### elasticsearch
 
