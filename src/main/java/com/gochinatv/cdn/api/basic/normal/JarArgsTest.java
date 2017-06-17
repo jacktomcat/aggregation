@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.normal;
+package com.gochinatv.cdn.api.basic.normal;
 
 import java.util.Iterator;
 import java.util.Map;

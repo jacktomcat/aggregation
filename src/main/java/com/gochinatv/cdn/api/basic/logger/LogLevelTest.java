@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.logger;
+package com.gochinatv.cdn.api.basic.logger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

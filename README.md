@@ -27,7 +27,7 @@ http://localhost:8088/
 #### rabbitmq
 
 #### logback日志级别输出
-+ com.gochinatv.cdn.api.logger
++ com.gochinatv.cdn.api.basic.logger
 + classpath:logback.xml
 
 #### zk 多client选leader
@@ -43,7 +43,11 @@ http://localhost:8088/
 + 分布式任务框架 com.gochinatv.cdn.api.elasticjob
 
 #### java位移判断是否包含权限
-+ 参考   com.gochinatv.cdn.api.displacement.DisplacementTest
++ 参考   com.gochinatv.cdn.api.basic.displacement
+
+#### java compareable接口
++ 参考   com.gochinatv.cdn.api.basic.compare
+
 
 ###TODO
 #### elasticsearch
