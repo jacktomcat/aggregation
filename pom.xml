@@ -215,6 +215,13 @@
 		    <version>3.2.0</version>
 		</dependency>
 		
+		<!-- thrift -->
+		<dependency>
+		    <groupId>org.apache.thrift</groupId>
+		    <artifactId>libthrift</artifactId>
+		    <version>0.10.0</version>
+		</dependency>
+		
 		<dependency>
 		    <groupId>org.apache.mina</groupId>
 		    <artifactId>mina-core</artifactId>

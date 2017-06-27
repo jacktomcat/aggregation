@@ -1,0 +1,75 @@
+package com.gochinatv.cdn.api.thrift;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.transport.TIOStreamTransport;
+import org.apache.thrift.transport.TTransport;
+import com.chsoft.datacollection.entity.thrift.User;
+
+
+
+/**
+ * thrift --gen java user-entity.thrift
+ * cd gen-java/namespace 下面
+ * 
+ * 
+ * @author zhuhuihui
+ *
+ */
+
+public class ThriftTest {
+
+	public static void main(String[] args) throws IOException {
+		byte[] bytes = serial();
+        parse(bytes); 
+	}
+
+	
+	/** 
+     * 序列化方法 
+     * 
+     * @return 
+     */  
+    private static byte[] serial() {  
+        User user = new User();  
+        user.setId(100);  
+        user.setName("sss");  
+        System.out.println("序列化之前的对象：" + user.toString());  
+        // 序列化  
+        ByteArrayOutputStream out = new ByteArrayOutputStream();  
+        TTransport transport = new TIOStreamTransport(out);  
+        TBinaryProtocol tp = new TBinaryProtocol(transport);//二进制编码格式进行数据传输  
+        //TCompactProtocol tp = new TCompactProtocol (transport);  
+        try {  
+            user.write(tp);  
+        } catch (TException e) {  
+            e.printStackTrace();  
+        }  
+        byte[] buf = out.toByteArray();  
+        return buf;  
+    }  
+    
+    
+    /** 
+     * 反序列化方法 
+     * 
+     * @param bis 
+     */  
+    private static void parse(byte[] bytes) {  
+        User user = new User();  
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes); 
+        TTransport transport = new TIOStreamTransport(bis);  
+        TBinaryProtocol tp = new TBinaryProtocol(transport);  
+        //TCompactProtocol tp = new TCompactProtocol(transport);  
+        try {  
+            user.read(tp);  
+            System.out.println("反序列化后的对象：" + user.toString());  
+        } catch (TException e) {  
+            e.printStackTrace();  
+        }  
+    } 
+
+}
