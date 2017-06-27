@@ -39,8 +39,8 @@ http://localhost:8088/
 #### protobuf 序列化实现
 + 参考 com.gochinatv.cdn.api.protobuf包  lib: data-collection-0.0.1-SNAPSHOT.jar:/protobuf/*.proto
 
-#### protobuf 序列化实现
-+ 参考 com.gochinatv.cdn.api.protobuf包  lib: data-collection-0.0.1-SNAPSHOT.jar:/protobuf/*.proto
+#### thrift 序列化实现
++ 参考 com.gochinatv.cdn.api.thrift 包  lib: data-collection-0.0.1-SNAPSHOT.jar:/thrift/*.thrift
 
 #### elastic-job
 + 分布式任务框架 com.gochinatv.cdn.api.elasticjob
