@@ -15,8 +15,9 @@ import com.chsoft.datacollection.entity.thrift.User;
  * thrift --gen java user-entity.thrift
  * cd gen-java/namespace 下面
  * 
+ * http://blog.csdn.net/xuemengrui12/article/details/60963538
  * 
- * @author zhuhuihui
+ * @author jacktomcat
  *
  */
 
