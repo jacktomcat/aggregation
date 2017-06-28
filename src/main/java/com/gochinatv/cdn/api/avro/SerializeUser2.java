@@ -66,7 +66,7 @@ public class SerializeUser2 {
 		user.put("id",3);  
 		user.put("userName", "李四");  
 		user.put("age",34); 
-		user.put("phone", "13439259710");
+		user.put("phone", "13139259711");
 		user.put("address", "北京市");
 		dataFileWriter.append(user);  
 		dataFileWriter.close(); 

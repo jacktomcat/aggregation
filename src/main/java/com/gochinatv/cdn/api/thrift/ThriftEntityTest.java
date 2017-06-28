@@ -21,7 +21,7 @@ import com.chsoft.datacollection.entity.thrift.User;
  *
  */
 
-public class ThriftTest {
+public class ThriftEntityTest {
 
 	public static void main(String[] args) throws IOException {
 		byte[] bytes = serial();
@@ -36,8 +36,11 @@ public class ThriftTest {
      */  
     private static byte[] serial() {  
         User user = new User();  
-        user.setId(100);  
-        user.setName("sss");  
+        user.setId(1);
+		user.setUserName("张三");
+		user.setAge(30);
+		user.setPhone("13139259711");
+		user.setAddress("北京市");  
         System.out.println("序列化之前的对象：" + user.toString());  
         // 序列化  
         ByteArrayOutputStream out = new ByteArrayOutputStream();  

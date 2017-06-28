@@ -39,10 +39,10 @@ public class ProtoBufListTest {
 		long start = System.currentTimeMillis();
 		for(int i=0;i<10000;i++){
 			UserEntity.User.Builder builder = UserEntity.User.newBuilder();
-			builder.setId(2);
+			builder.setId(i);
 			builder.setUserName("张三" + i);
 			builder.setAge(30);
-			builder.setPhone("13439259710");
+			builder.setPhone("13139259711");
 			builder.setAddress("北京市");
 			
 			UserEntity.User write = builder.build();

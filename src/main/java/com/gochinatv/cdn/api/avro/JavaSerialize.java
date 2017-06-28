@@ -27,7 +27,7 @@ public class JavaSerialize{
 		ObjectOutputStream oos = new ObjectOutputStream(baos);  
 		   
 		   for(int i=0;i<10000;i++){
-			   Users user = new Users(1,"张三",30,"13439259710");
+			   Users user = new Users(1,"张三",30,"13139259711");
 			   oos.writeObject(user);  
 		   }
 		   oos.flush();  

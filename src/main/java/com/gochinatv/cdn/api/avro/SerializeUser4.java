@@ -57,7 +57,7 @@ public class SerializeUser4 {
 			GenericRecord video = new GenericData.Record(schema);  
 			video.put("id",2);  
 			video.put("videoName", "爱情保卫战" + i); 
-			video.put("desc", "13439259710");
+			video.put("desc", "13139259711");
 			video.put("status",1); 
 			userDatumWriter.write(video, binaryEncoder);
 		}
