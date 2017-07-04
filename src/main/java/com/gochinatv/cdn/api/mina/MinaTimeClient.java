@@ -1,11 +1,20 @@
 package com.gochinatv.cdn.api.mina;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
+import java.nio.charset.Charset;
+import java.util.Scanner;
+
 import org.apache.mina.core.RuntimeIoException;
 import org.apache.mina.core.future.ConnectFuture;
+import org.apache.mina.core.service.IoService;
+import org.apache.mina.core.service.IoServiceListener;
+import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.codec.serialization.ObjectSerializationCodecFactory;
+import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
 import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
@@ -19,12 +28,11 @@ public class MinaTimeClient {
 	    NioSocketConnector connector = new NioSocketConnector();
 	    connector.setConnectTimeoutMillis(CONNECT_TIMEOUT);
 
-	    connector.getFilterChain().addLast("codec", new ProtocolCodecFilter(new ObjectSerializationCodecFactory()));
+		connector.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
 
 	    connector.getFilterChain().addLast("logger", new LoggingFilter());
-	    connector.setHandler(new TimeClientHandler(new int[]{1,78,34,653,99872,47387}));
+	    connector.setHandler(new TimeClientHandler());
 	    IoSession session;
-
 	    for (;;) {
 	        try {
 	            ConnectFuture future = connector.connect(new InetSocketAddress("localhost", PORT));

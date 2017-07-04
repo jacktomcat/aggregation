@@ -16,6 +16,7 @@ import com.chsoft.datacollection.entity.thrift.User;
  * cd gen-java/namespace 下面
  * 
  * http://blog.csdn.net/xuemengrui12/article/details/60963538
+ * http://blog.csdn.net/z69183787/article/details/53005717
  * 
  * @author jacktomcat
  *

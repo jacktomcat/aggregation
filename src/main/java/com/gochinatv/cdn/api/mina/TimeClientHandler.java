@@ -1,66 +1,56 @@
 package com.gochinatv.cdn.api.mina;
 
 import org.apache.mina.core.service.IoHandlerAdapter;
+import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.gochinatv.cdn.api.mina.message.AddMessage;
-import com.gochinatv.cdn.api.mina.message.ResultMessage;
-
+/**
+ * Created by jacktomcat on 17/7/2.
+ */
 public class TimeClientHandler extends IoHandlerAdapter {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(TimeClientHandler.class);
-    
-    private final int[] values;
-
-    private boolean finished;
-
-    public TimeClientHandler(int[] values) {
-        this.values = values;
-    }
-
-    public boolean isFinished() {
-        return finished;
+    @Override
+    public void sessionCreated(IoSession session) throws Exception {
+        super.sessionCreated(session);
+        System.out.println("Client sessionCreated : 创建session");
     }
 
     @Override
-    public void sessionOpened(IoSession session) {
-        // send summation requests
-        for (int i = 0; i < values.length; i++) {
-            AddMessage m = new AddMessage();
-            m.setSequence(i);
-            m.setValue(values[i]);
-            session.write(m);
-        }
+    public void sessionOpened(IoSession session) throws Exception {
+        super.sessionOpened(session);
+        System.out.println("Client sessionOpened : 打开session");
     }
 
     @Override
-    public void messageReceived(IoSession session, Object message) {
-        // server only sends ResultMessage. otherwise, we will have to identify
-        // its type using instanceof operator.
-        ResultMessage rm = (ResultMessage) message;
-        if (rm.isOk()) {
-            // server returned OK code.
-            // if received the result message which has the last sequence
-            // number,
-            // it is time to disconnect.
-            if (rm.getSequence() == values.length - 1) {
-                // print the sum and disconnect.
-                LOGGER.info("The sum: " + rm.getValue());
-                session.close(true);
-                finished = true;
-            }
-        } else {
-            // seever returned error code because of overflow, etc.
-            LOGGER.warn("Server error, disconnecting...");
-            session.close(true);
-            finished = true;
-        }
+    public void sessionClosed(IoSession session) throws Exception {
+        super.sessionClosed(session);
+        System.out.println("Client sessionClosed : 关闭session");
     }
 
     @Override
-    public void exceptionCaught(IoSession session, Throwable cause) {
-        session.close(true);
+    public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
+        super.sessionIdle(session, status);
+        System.out.println("Client sessionIdle : session 空闲 :" + status.toString());
+    }
+
+    @Override
+    public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
+        super.exceptionCaught(session, cause);
+        System.out.println("Client exceptionCaught : 发生异常: " +cause.getMessage());
+    }
+
+    @Override
+    public void messageReceived(IoSession session, Object message) throws Exception {
+        super.messageReceived(session, message);
+        System.out.println("Client messageReceived : 接收 message :" + message);
+        Thread.sleep(1000);
+        session.write("hello too!!!!");
+    }
+
+    @Override
+    public void messageSent(IoSession session, Object message) throws Exception {
+        //super.messageSent(session, message);
+        //session.write("hello");
+        System.out.println("Client messageSent : 发送 message :" + message);
     }
 }
