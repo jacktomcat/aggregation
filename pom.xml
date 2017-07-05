@@ -228,11 +228,11 @@
 		    <version>2.0.7</version>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.chsoft.datacollection</groupId>
 			<artifactId>data-collection</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency> -->
 		
 		 <!-- jedis -->
 		<dependency>
