@@ -1,7 +1,6 @@
 # aggregation
 聚合项目，大杂烩
 
-aaaaaaaaaa
 #### kafka
 ```
 创建topic并指定topic参数
