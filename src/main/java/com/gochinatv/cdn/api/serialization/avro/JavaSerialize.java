@@ -2,7 +2,7 @@ package com.gochinatv.cdn.api.serialization.avro;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import com.gochinatv.cdn.api.serialization.Users;
 
 
 /**
@@ -23,75 +23,22 @@ public class JavaSerialize{
 	public static void main(String[] args) throws Exception {
 		//File file = new File("/Users/zhuhuihui/users.object");
 		//FileOutputStream fos = new FileOutputStream(file); 
+		long start = System.currentTimeMillis();
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ObjectOutputStream oos = new ObjectOutputStream(baos);  
 		   
 		   for(int i=0;i<10000;i++){
-			   Users user = new Users(1,"张三",30,"13139259711");
+			   Users user = new Users(1,"张三"+i,30,"13339259710","北京市");
 			   oos.writeObject(user);  
 		   }
 		   oos.flush();  
 		   oos.close();
 		   baos.flush();
 		   baos.close();
-		   byte[] byteArray = baos.toByteArray();
-		   System.out.println(byteArray.length);
+		   byte[] data = baos.toByteArray();
+		   System.out.println(data.length+"============耗时："+(System.currentTimeMillis()-start));
 		   
 		
 	}
 	
-}
-
-
-class Users implements Serializable{
-	
-private int id;
-	
-	private String userName;
-	
-	private int age;
-	
-	private String phone;
-
-	public Users(){}
-	
-	public Users(int id,String userName,int age,String phone){
-		this.id = id;
-		this.userName = userName;
-		this.age = age;
-		this.phone = phone;
-	}
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 }

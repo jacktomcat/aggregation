@@ -27,7 +27,7 @@ public class ThriftListTest {
 
 	public static void main(String[] args) throws IOException {
 		byte[] bytes = serial();
-        parse(bytes); 
+       // parse(bytes); 
 	}
 
 	
