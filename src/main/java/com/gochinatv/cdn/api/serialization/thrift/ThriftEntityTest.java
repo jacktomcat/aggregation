@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.thrift;
+package com.gochinatv.cdn.api.serialization.thrift;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

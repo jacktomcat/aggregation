@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.protobuf;
+package com.gochinatv.cdn.api.serialization.protobuf;
 
 import java.io.IOException;
 import java.util.List;

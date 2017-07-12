@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.avro;
+package com.gochinatv.cdn.api.serialization.avro;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;

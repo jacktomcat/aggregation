@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.avro;
+package com.gochinatv.cdn.api.serialization.avro;
 
 import java.io.File;
 import java.io.IOException;
