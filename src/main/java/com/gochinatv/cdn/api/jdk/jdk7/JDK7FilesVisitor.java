@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.file;
+package com.gochinatv.cdn.api.jdk.jdk7;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;

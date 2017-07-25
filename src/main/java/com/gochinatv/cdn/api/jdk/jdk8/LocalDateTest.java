@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.newfunction;
+package com.gochinatv.cdn.api.jdk.jdk8;
 
 import java.time.LocalDate;
 

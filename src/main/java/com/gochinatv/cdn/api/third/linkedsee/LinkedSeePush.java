@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.third.bearychat;
+package com.gochinatv.cdn.api.third.linkedsee;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -13,25 +13,21 @@ import org.apache.http.util.EntityUtils;
 
 import com.alibaba.fastjson.JSONObject;
 
-public class PushMessageTest {
+public class LinkedSeePush {
 
 	public static final String APPLICATION_JSON = "application/json";
 	public static final int TIME_OUT = 10000;
 
 	public static void main(String[] args) throws Exception {
 		JSONObject data = new JSONObject();
-		data.put("text", "你好,测试bearychata");
-		data.put("markdown", "true");
+		data.put("content", "your app test-0923 have alarm");
+		data.put("encrypt", "true");
 		
-		String result = postJson("https://hook.bearychat.com/=bwAYM/incoming/42cd77028c0a79596700ada76ec6e559",data);
-		//{"code":0,"result":null}
-		//{"code":6,"error":"\u8d44\u6e90\u672a\u627e\u5230","result":null}
-		//{"code":404,"error":"not found route","result":null}
-		System.out.println(result);
+		postJson("http://www.linkedsee.com/alarm/custom",data);
+		
 	}
-	
-	
-	public static String postJson(String url,JSONObject data) throws Exception {
+
+	public static String postJson(String url, JSONObject data) throws Exception {
 
 		BasicHttpParams httpParams = new BasicHttpParams();
 		HttpConnectionParams.setSoTimeout(httpParams, TIME_OUT);
@@ -41,6 +37,7 @@ public class PushMessageTest {
 		client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, TIME_OUT);// 读取超时
 
 		HttpPost post = new HttpPost(url);
+		post.setHeader("servicetoken", "5890b2e73fc1ef6cc2a013d0bc19945c");
 
 		StringEntity entity = new StringEntity(data.toString(), "utf-8");// 解决中文乱码问题
 		entity.setContentEncoding("UTF-8");
@@ -51,8 +48,9 @@ public class PushMessageTest {
 		if (result != null) {
 			return EntityUtils.toString(result, "UTF-8").trim();
 		}
-		
+
 		return null;
 	}
-
+	
+	
 }

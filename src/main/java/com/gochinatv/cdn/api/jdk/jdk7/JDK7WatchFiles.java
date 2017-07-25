@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.file;
+package com.gochinatv.cdn.api.jdk.jdk7;
 
 import java.nio.file.FileSystems;
 import java.nio.file.Paths;
