@@ -11,12 +11,7 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.util.EntityUtils;
-
 import com.alibaba.fastjson.JSONObject;
-import com.dingtalk.api.DefaultDingTalkClient;
-import com.dingtalk.api.DingTalkClient;
-import com.dingtalk.api.request.CorpMessageCorpconversationAsyncsendRequest;
-import com.dingtalk.api.response.CorpMessageCorpconversationAsyncsendResponse;
 
 
 /**
