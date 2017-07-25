@@ -2,6 +2,7 @@ package com.gochinatv.cdn.api.jdk.jdk8;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 
@@ -23,7 +24,9 @@ public class LocalDateTimeTest {
         System.out.println("LocalTime to LocalDate = "+ldf.toLocalDate());//设置时间
         System.out.println("LocalTime to LocalTime = "+ldf.toLocalTime());//设置时间
         System.out.println("LocalDateTime truncatedTo= "+ ldf.atZone(ZoneId.systemDefault()).truncatedTo(ChronoUnit.SECONDS)
-        		.getLong(ChronoField.INSTANT_SECONDS));
+        		.getLong(ChronoField.INSTANT_SECONDS));//默认时区,从1970-01-01 到现在的秒数
+        
+       // ldf.toEpochSecond(ZoneOffset.)
     
 	}
 }

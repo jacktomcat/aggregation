@@ -9,5 +9,9 @@ public class ZoneIdTest {
 		System.out.println("=====================ZoneId=======================");
         ZoneId systemDefault = ZoneId.systemDefault();
         System.out.println("ZoneId Default= "+ systemDefault);//获取系统默认时区
+        
+        ZoneId of = ZoneId.of("Asia/Shanghai");
+        
+        System.out.println(of);
 	}
 }
