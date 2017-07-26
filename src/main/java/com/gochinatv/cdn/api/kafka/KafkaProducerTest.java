@@ -36,10 +36,12 @@ public class KafkaProducerTest {
 		 //case 1:
 		 //没有任何分区，默认1个分区，发送消息
         while(true){
-        	 Thread.sleep(1000L);
-		     producer.send(new ProducerRecord<String, String>("kafka-test", Integer.toString(i), Integer.toString(i)+"-jackjboss"));
+        	 //Thread.sleep(300L);
+		     producer.send(new ProducerRecord<String, String>("NL_U_APP_ALARM_SERVER", Integer.toString(i), Integer.toString(i)+"-jackjboss"));
 		     System.out.println("================send============="+i);
-		     i = i+1;
+		     //i = i+1;
+			producer.flush();
+			//producer.close();
 		 }
 		 
 		 //case 2
