@@ -7,11 +7,19 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 /**
- * 
+ *
+ * 时间点
+ *
  * https://dotnetcodr.com/2015/01/03/java-8-date-and-time-api-the-instant-class/
  * @author jacktomcat
  * 
  * Instant类是用在机器可读的时间格式上的，它以Unix时间戳的形式存储日期时间
+ *
+ * 在处理时间和日期的时候，我们通常会想到年，月，日，时，分，秒。然而，这只是时间的一个模型，是面向人类的。
+ * 第二种通用模型是面向机器的，或者说是连续的。在此模型中，时间线中的一个点表示为一个很大的数。
+ * 这有利于计算机处理。在UNIX中，这个数从1970年开始，以秒为的单位；
+ * 同样的，在Java中，也是从1970年开始，但以毫秒为单位。
+ *
  *
  */
 public class InstantTest {

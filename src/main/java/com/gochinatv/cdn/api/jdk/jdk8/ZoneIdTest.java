@@ -1,7 +1,12 @@
 package com.gochinatv.cdn.api.jdk.jdk8;
 
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 
+
+/**
+ * ZoneId的子类，ZoneOffset，代表了这种从伦敦格林威治零度子午线开始的时间偏移
+ */
 public class ZoneIdTest {
    
 	
@@ -12,6 +17,10 @@ public class ZoneIdTest {
         
         ZoneId of = ZoneId.of("Asia/Shanghai");
         
-        System.out.println(of);
-	}
+        System.out.println("ZoneID of = " + of);
+
+
+        ZoneOffset offset  = ZoneOffset.of("Asia/Shanghai");
+        System.out.println(offset);
+    }
 }
