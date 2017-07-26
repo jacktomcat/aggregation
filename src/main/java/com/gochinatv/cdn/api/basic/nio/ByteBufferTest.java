@@ -3,6 +3,8 @@ package com.gochinatv.cdn.api.basic.nio;
 
 import java.nio.ByteBuffer;
 
+import org.apache.commons.configuration2.sync.SynchronizerSupport;
+
 
 /**
  * 参考:
@@ -50,7 +52,7 @@ public class ByteBufferTest {
 
 		System.out.println("clear 之前 capacity:" +buffer.capacity()+" limit:"+buffer.limit()+" position:"+buffer.position()+" remaining:"+buffer.remaining());
 		buffer.clear();//position = 0 ; limit = capacity;
-		buffer.put("fg".getBytes());
+		buffer.put("fghi".getBytes());
 		System.out.println("put之后 capacity:" +buffer.capacity()+" limit:"+buffer.limit()+" position:"+buffer.position()+" remaining:"+buffer.remaining());
 
 		buffer.flip();
@@ -58,14 +60,28 @@ public class ByteBufferTest {
 		byte[] dest2 = new byte[buffer.limit()];
 		buffer.get(dest2);
 		System.out.println(new String(dest2));
+		System.out.println("flip get 之后 capacity:" +buffer.capacity()+" limit:"+buffer.limit()+" position:"+buffer.position()+" remaining:"+buffer.remaining());
 
-		buffer.compact();// 切换compact写模式
-
-		//buffer.mark();
-		//buffer.reset();
-
-		//System.out.println("clear 之后 capacity:" +buffer.capacity()+" limit:"+buffer.limit()+" position:"+buffer.position()+" remaining:"+buffer.remaining());
+		buffer.position(3); 
 		
+		buffer.mark();//mark = position
+		System.out.println("mark之后 capacity:" +buffer.capacity()+" limit:"+buffer.limit()+" position:"+buffer.position()+" remaining:"+buffer.remaining());
+		
+		byte b = buffer.get();
+		System.out.println(new String(new byte[]{b}));
+		System.out.println("mark之后 get一次 capacity:" +buffer.capacity()+" limit:"+buffer.limit()+" position:"+buffer.position()+" remaining:"+buffer.remaining());
+		
+		buffer.reset();//position = mark
+		System.out.println("reset之后 capacity:" +buffer.capacity()+" limit:"+buffer.limit()+" position:"+buffer.position()+" remaining:"+buffer.remaining());
+		
+		/**
+		 * compact()，压缩数据。比如当前EOF是6，当前指针指向2 （即0,1的数据已经写出了，没用了），
+		 *	那么compact方法将把2,3,4,5的数据挪到0,1,2,3的位置，
+		 *  然后指针指向4的位置。这样的意思是，从4的位置接着再写入数据。
+		 *  写完后，把指针挪到0，再写出，然后再compact()，如此反复
+		 */
+		buffer.compact();// 切换compact写模式    position=(limit-position)   limit=capacity
+		System.out.println("compact 之后 capacity:" +buffer.capacity()+" limit:"+buffer.limit()+" position:"+buffer.position()+" remaining:"+buffer.remaining());
 	}
 	
 	
