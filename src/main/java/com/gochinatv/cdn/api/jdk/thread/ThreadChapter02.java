@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.thread;
+package com.gochinatv.cdn.api.jdk.thread;
 
 import java.util.HashMap;
 import java.util.concurrent.locks.ReadWriteLock;

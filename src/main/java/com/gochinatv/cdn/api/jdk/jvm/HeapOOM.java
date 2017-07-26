@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.jvm;
+package com.gochinatv.cdn.api.jdk.jvm;
 
 /**
  * 
