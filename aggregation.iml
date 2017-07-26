@@ -164,5 +164,10 @@
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.thrift:libthrift:0.10.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.mina:mina-core:2.0.7" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.pagerduty:pagerduty-incidents:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.retrofit2:retrofit:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.2.0" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.6.0" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup.retrofit2:converter-gson:2.0.0" level="project" />
   </component>
 </module>
