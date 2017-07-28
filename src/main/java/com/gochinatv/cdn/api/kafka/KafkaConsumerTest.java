@@ -20,22 +20,24 @@ import kafka.consumer.SimpleConsumer;
 public class KafkaConsumerTest {
 
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         Properties props = new Properties();
         props.put("group.id", "kafka01");
-        props.put("zookeeper.connect", "192.168.2.150:2181");
-        props.put("bootstrap.servers", "192.168.2.150:9092");
+        props.put("zookeeper.connect", "192.168.5.102:2181");
+        props.put("bootstrap.servers", "192.168.5.102:9092");
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("session.timeout.ms", "5000");
+        props.put("request.timeout.ms", "15000");
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
 
         //自动设置offset，消费topic中的全部分区
-        consumer.subscribe(Arrays.asList("NL_U_APP_ALARM_SERVER"));
+        consumer.subscribe(Arrays.asList("q-newlens-appserver-metrics-persist"));
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);
-            Thread.sleep(500L);
+            
             for (ConsumerRecord<String, String> record : records) {
                 System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
             }

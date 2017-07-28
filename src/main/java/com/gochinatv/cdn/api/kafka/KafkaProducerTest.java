@@ -21,7 +21,7 @@ public class KafkaProducerTest {
    
 	public static void main(String[] args) throws Exception {
 		 Properties props = new Properties();
-		 props.put("bootstrap.servers", "192.168.2.150:9092");
+		 props.put("bootstrap.servers", "192.168.5.102:9092");
 		 props.put("acks", "all");
 		 props.put("retries", 0);
 		 props.put("batch.size", 16384);
@@ -35,14 +35,15 @@ public class KafkaProducerTest {
 		 
 		 //case 1:
 		 //没有任何分区，默认1个分区，发送消息
-        while(true){
-        	 //Thread.sleep(300L);
-		     producer.send(new ProducerRecord<String, String>("NL_U_APP_ALARM_SERVER", Integer.toString(i), Integer.toString(i)+"-jackjboss"));
+        while(i<=10000){
+        	 //Thread.sleep(1000L);
+		     producer.send(new ProducerRecord<String, String>("q-newlens-appserver-metrics-persist", Integer.toString(i), Integer.toString(i)+"-jackjboss"));
 		     System.out.println("================send============="+i);
-		     //i = i+1;
+		     i = i+1;
 			producer.flush();
 			//producer.close();
 		 }
+        producer.close();
 		 
 		 //case 2
 		 //发送带时间戳的message
