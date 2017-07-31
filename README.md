@@ -54,4 +54,6 @@ http://localhost:8088/
 
 ###TODO
 #### elasticsearch
+#### <task:scheduler id="serviceScheduler" pool-size="16" /> 支持
+
 
