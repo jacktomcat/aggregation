@@ -67,4 +67,71 @@ public class LockSupportTest {
 	    System.out.println("主线程end");
 	}
 	
+	
+	/**
+	 * synchronized 中的wait和notify,必须先wait,然后在notify
+	 */
+	@Test
+	public void waitAndNotify() {
+		Thread main = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				
+			}
+		});
+		System.out.println("主线程启动===="+main.getName());
+		main.start();
+		
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(5000L);
+					System.out.println("子线程唤醒主线程notify===="+Thread.currentThread().getName());
+					synchronized (main) {
+						main.notify();
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+		
+		System.out.println("主线程等待wait===="+main.getName());
+		try {
+			Thread.sleep(1000L);
+			synchronized (main) {
+				main.wait();   //如果当前线程不是对象所得持有者，该方法抛出一个java.lang.IllegalMonitorStateException 异常
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("主线程结束===="+main.getName());
+	}
+	
+	//常用方法汇总
+	/**返回提供给最近一次尚未解除阻塞的 park 方法调用的 blocker 对象，如果该调用不受阻塞，则返回 null。**/
+	//static Object getBlocker(Thread t)
+	
+	/**为了线程调度，禁用当前线程，除非许可可用。**/
+	//static void park()
+	
+	/**为了线程调度，在许可可用之前禁用当前线程。**/
+	//static void park(Object blocker)
+	
+	/**为了线程调度禁用当前线程，最多等待指定的等待时间，除非许可可用。**/
+	//static void parkNanos(long nanos)
+	
+	/**为了线程调度，在许可可用前禁用当前线程，并最多等待指定的等待时间。**/
+	//static void parkNanos(Object blocker, long nanos)
+	
+	/**为了线程调度，在指定的时限前禁用当前线程，除非许可可用。**/
+	//static void parkUntil(long deadline)
+	
+	/**为了线程调度，在指定的时限前禁用当前线程，除非许可可用。**/
+	//static void parkUntil(Object blocker, long deadline)
+	
+	/**如果给定线程的许可尚不可用，则使其可用。**/
+	//static void unpark(Thread thread)
+	
 }
