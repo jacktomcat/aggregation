@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.jdk.thread;
+package com.gochinatv.cdn.api.jdk.lock;
 
 public class Lock{
 	
