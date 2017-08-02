@@ -23,8 +23,8 @@ public class HeapOOM {
 	public static void main(String[] args) {
 		int number = 0;
 		while(true){
-			byte[] b = new byte[1024*1024*5];
-			System.out.println(++number);
+			//byte[] b = new byte[1024*1024*5];
+			//System.out.println(++number);
 		}
 	}
 }
