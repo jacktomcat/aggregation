@@ -1,7 +1,12 @@
 package com.gochinatv.cdn.api.guava;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import org.junit.Test;
+
+import java.util.HashSet;
+
 
 /**
  *
@@ -21,9 +26,43 @@ public class ImmutableTest {
 
     @Test
     public void immutableList() {
-        ImmutableList<String> list = ImmutableList.of();
-        //list.
+        //ImmutableList.copyOf(new ArrayList<Object>())  初始化
+        ImmutableList<String> list = ImmutableList.of("张三","李四","王五");
+        System.out.println(list);
 
+        list.reverse().forEach(v-> System.out.println(v));//java8 的迭代方式
+        list.forEach(v-> System.out.println(v));//java8 的迭代方式
+
+        //TODO java8 stream
+        //list.stream().
     }
+
+
+
+    @Test
+    public void immutableMap() {
+        //ImmutableMap.copyOf(new HashedMap<String,Object>())  //初始化
+        ImmutableMap<String,Object> map = ImmutableMap.of("name","张山","age",23);
+
+        map.forEach((k,v)->{//java8 迭代
+            System.out.println(k + "," + v);
+        });
+    }
+
+
+    @Test
+    public void immutableSet() {
+        //ImmutableSet.copyOf(new HashSet<String>()) //初始化
+
+        ImmutableSet<String> set = ImmutableSet.of("张三","李四");
+        set.forEach(v-> System.out.println(v));//java8 迭代
+
+        //filter过滤
+        set.stream().filter(v->v.equals("张三")).forEach(System.out::println);
+    }
+
+
+
+    //java8的 Stream是“延迟计算”（lazy）
 
 }

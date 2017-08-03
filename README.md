@@ -55,5 +55,15 @@ http://localhost:8088/
 ###TODO
 #### elasticsearch
 #### <task:scheduler id="serviceScheduler" pool-size="16" /> 支持
+####
+     com.gochinatv.cdn.api.jdk.ThreadLocalTest
+     com.gochinatv.cdn.api.jdk.jdk8.StreamTest
+     com.gochinatv.cdn.api.jdk.lock.ReentrantLockTest
+     com.gochinatv.cdn.api.jdk.jvm.HeapOOM
+     com.gochinatv.cdn.api.jdk.concurrent.VolatileTest
+     com.gochinatv.cdn.api.jdk.concurrent.ConcurrentHashMapTest
+     com.gochinatv.cdn.api.jdk.concurrent.BlockingQueueTest
+     com.gochinatv.cdn.api.jdk.concurrent.ForkJoinTest
+
 
 
