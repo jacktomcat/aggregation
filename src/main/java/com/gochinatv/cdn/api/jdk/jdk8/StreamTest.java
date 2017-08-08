@@ -122,6 +122,7 @@ public class StreamTest {
         //string to map
         Map<Integer, List<String>> collect =
                 result.stream().collect(Collectors.groupingBy(v -> v.length()));
+        //Collectors.toCollection(collectionFactory)
 
     }
     
