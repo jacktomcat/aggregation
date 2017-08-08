@@ -3,6 +3,7 @@ package com.gochinatv.cdn.api.jdk.jdk8;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.OptionalInt;
@@ -122,6 +123,22 @@ public class StreamTest {
         Map<Integer, List<String>> collect =
                 result.stream().collect(Collectors.groupingBy(v -> v.length()));
 
-
     }
+    
+    
+    public static void main(String[] args) {
+    	String[] language = {"spring","hibernate","hadoop","spark"};
+    	
+    	// 这里主要强调了   StreamTest::filterPrefix 和  v->StreamTest.filterPrefix(v)  用法区别
+		Arrays.stream(language).filter(StreamTest::filterPrefix).forEach(System.out::println);
+		Arrays.stream(language).filter(v->StreamTest.filterPrefix(v)).forEach(System.out::println);
+	}
+    
+    public static boolean filterPrefix(String text){
+    	if(text.startsWith("h")){
+    		return true;
+    	}
+    	return false;
+    }
+    
 }
