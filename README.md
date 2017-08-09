@@ -62,7 +62,7 @@ http://localhost:8088/
      com.gochinatv.cdn.api.jdk.jvm.HeapOOM
      com.gochinatv.cdn.api.jdk.concurrent.ConcurrentHashMapTest
      com.gochinatv.cdn.api.jdk.concurrent.BlockingQueueTest
-     com.gochinatv.cdn.api.jdk.concurrent.ForkJoinTest
+     com.gochinatv.cdn.api.jdk.concurrent.ForkJoinTest01
      com.gochinatv.cdn.api.basic.normal.EnumSet
 
 

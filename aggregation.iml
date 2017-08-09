@@ -171,5 +171,9 @@
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.6.0" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.retrofit2:converter-gson:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.rethinkdb:rethinkdb-driver:2.3.3" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
+    <orderEntry type="library" name="Maven: com.clearspring.analytics:stream:2.9.5" level="project" />
+    <orderEntry type="library" name="Maven: it.unimi.dsi:fastutil:7.0.6" level="project" />
   </component>
 </module>
