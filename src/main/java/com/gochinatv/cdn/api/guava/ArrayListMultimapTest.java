@@ -7,5 +7,5 @@ package com.gochinatv.cdn.api.guava;
  *
  */
 public class ArrayListMultimapTest {
-
+    
 }
