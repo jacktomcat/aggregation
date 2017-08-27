@@ -1,4 +1,4 @@
-package com.gochinatv.cdn.api.guava;
+package com.gochinatv.cdn.api.guava.concurrent;
 
 import com.google.common.util.concurrent.RateLimiter;
 import org.junit.Test;
