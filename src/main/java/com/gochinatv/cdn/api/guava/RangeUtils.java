@@ -38,5 +38,7 @@ public class RangeUtils {
 		Range<Integer> closed = Range.closedOpen(1, 4);
 		System.out.println("====="+closed.lowerBoundType()+"===="+closed.upperBoundType());
 		System.out.println("====="+closed.lowerEndpoint()+"===="+closed.upperEndpoint());
+
+
 	}
 }

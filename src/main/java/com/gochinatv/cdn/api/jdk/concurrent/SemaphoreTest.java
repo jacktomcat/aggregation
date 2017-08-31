@@ -34,10 +34,7 @@ public class SemaphoreTest {
 	@Test
 	public void semaphore() {
 		for(int i=0;i<THREAD_COUNT;i++){
-			threadPool.submit(new Runnable() {
-				
-				@Override
-				public void run() {
+			threadPool.submit(()->{
 					try {
 						s.acquire();
 						System.out.println(
@@ -47,7 +44,6 @@ public class SemaphoreTest {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-				}
 			});
 		}
 		threadPool.shutdown();
