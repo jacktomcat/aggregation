@@ -20,7 +20,7 @@ public class ElasticLiteJobTest {
     
     static{
     	zkConfig = 
-        		new ZookeeperConfiguration("192.168.2.150:2181", "elastic-job", 1000, 3000, 3);
+        		new ZookeeperConfiguration("localhost:2181", "topn-job", 1000, 3000, 3);
     	regCenter = new ZookeeperRegistryCenter(zkConfig);
     	regCenter.init();
     }
@@ -28,7 +28,7 @@ public class ElasticLiteJobTest {
     private static LiteJobConfiguration createJobConfiguration() {
         // 创建作业配置
          
-        JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder("myDataFlowTest", "0 0/5 * * * ?", 10).shardingItemParameters("0=0,1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9").build();
+        JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder("myDataFlowTest", "0 0/1 * * * ?", 10).shardingItemParameters("0=0,1=1,2=2,3=3,4=4,5=5,6=6,7=7,8=8,9=9").build();
         DataflowJobConfiguration dataflowJobConfig = new DataflowJobConfiguration(coreConfig, JavaDataflowJob.class.getCanonicalName(), true);
         LiteJobConfiguration result = LiteJobConfiguration.newBuilder(dataflowJobConfig).build();
         return result;
