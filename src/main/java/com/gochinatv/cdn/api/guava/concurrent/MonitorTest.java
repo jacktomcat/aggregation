@@ -12,8 +12,11 @@ package com.gochinatv.cdn.api.guava.concurrent;
  *
  *
  * http://www.codeweblog.com/guava%E5%BA%93%E5%AD%A6%E4%B9%A0-%E5%AD%A6%E4%B9%A0concurrency-%E4%BA%8C-monitor_1/
+ * http://blog.csdn.net/a837199685/article/details/50610141
  *
  * Created by jacktomcat on 17/8/27.
  */
 public class MonitorTest {
+	
+	
 }
