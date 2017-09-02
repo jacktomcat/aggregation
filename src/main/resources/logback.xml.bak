@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/var/log/aggregation/aggregation.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/var/log/aggregation/aggregation.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 把 warn日志级别以上的单独输出到 error的log文件,方便以后查询 -->
+	<appender name="appenderError" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+        <file>/var/log/aggregation/aggregation-error.log</file>  
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/var/log/aggregation/aggregation-error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+        </rollingPolicy>
+	    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+	    </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">  
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>  
+        </encoder>  
+    </appender>
+    
+    <appender name="sysout" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+        <file>/var/log/aggregation/aggregation.sysout.log</file>  
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
+            <fileNamePattern>/var/log/aggregation/aggregation.sysout.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>  
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">  
+            <pattern>%d{MM-dd HH:mm:ss} [%thread] - %msg%n</pattern>  
+        </encoder>  
+    </appender>
+    
+   	<appender name="syserr" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+        <file>/var/log/aggregation/aggregation.syserr.log</file>  
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
+            <fileNamePattern>/var/log/aggregation/aggregation.syserr.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>  
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">  
+            <pattern>%d{MM-dd HH:mm:ss} [%thread] - %msg%n</pattern>  
+        </encoder>  
+    </appender>
+    
+
+	<root level="DEBUG">
+	    <appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+		<appender-ref ref="appenderError" />
+	</root>
+	
+	<logger name="System.out" level="DEBUG">
+		<appender-ref ref="sysout" />
+	</logger>
+	<logger name="System.err" level="DEBUG">
+		<appender-ref ref="syserr" />
+	</logger>
+
+    <logger name="com.gochinatv.cdn.api" level="DEBUG"/>
+	<logger name="org.springframework" level="ERROR" />
+	<logger name="org.apache" level="ERROR" />
+
+</configuration>

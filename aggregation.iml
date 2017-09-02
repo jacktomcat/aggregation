@@ -174,5 +174,6 @@
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.clearspring.analytics:stream:2.9.5" level="project" />
     <orderEntry type="library" name="Maven: it.unimi.dsi:fastutil:7.0.6" level="project" />
+    <orderEntry type="library" name="data-collection-0.0.1-SNAPSHOT1" level="project" />
   </component>
 </module>
