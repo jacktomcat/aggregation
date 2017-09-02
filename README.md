@@ -64,6 +64,7 @@ http://localhost:8088/
      com.gochinatv.cdn.api.jdk.concurrent.BlockingQueueTest
      com.gochinatv.cdn.api.jdk.concurrent.ForkJoinTest01
      com.gochinatv.cdn.api.basic.normal.EnumSet
+     com.gochinatv.cdn.api.jdk.thread.ThreadPoolTest
 
 
 
