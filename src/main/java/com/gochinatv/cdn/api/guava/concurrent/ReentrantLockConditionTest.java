@@ -1,5 +1,6 @@
 package com.gochinatv.cdn.api.guava.concurrent;
 
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 
@@ -28,6 +29,8 @@ public class ReentrantLockConditionTest<V> {
             lock.unlock();
         }
     }
+
+
     public void set(V newValue) throws InterruptedException {
         lock.lock();
         try {
@@ -42,5 +45,7 @@ public class ReentrantLockConditionTest<V> {
             lock.unlock();
         }
     }
+
+
     
 }
