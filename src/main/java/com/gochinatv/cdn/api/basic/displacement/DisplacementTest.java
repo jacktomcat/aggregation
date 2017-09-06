@@ -31,16 +31,16 @@ public class DisplacementTest {
 		 
 		 //判断权限会用下面的形式来判断是否具有权限  
 		 int resultAnd = authority & search ;
-		 System.out.println("查询权限====="+resultAnd);//1          0111|0001  = 0001(真真为真, 真假为假, 假假为假)
+		 System.out.println("查询权限====="+resultAnd);//1          0111&0001  = 0001(真真为真, 真假为假, 假假为假)
 		 
 		 resultAnd = authority & save ;
-		 System.out.println("添加权限====="+resultAnd);//2          0111|0010  = 0010(真真为真, 真假为假, 假假为假)
+		 System.out.println("添加权限====="+resultAnd);//2          0111&0010  = 0010(真真为真, 真假为假, 假假为假)
 		 
 		 resultAnd = authority & update ;
-		 System.out.println("修改权限====="+resultAnd);//4          0111|0100  = 0100(真真为真, 真假为假, 假假为假)
+		 System.out.println("修改权限====="+resultAnd);//4          0111&0100  = 0100(真真为真, 真假为假, 假假为假)
 		 
 		 resultAnd = authority & delete ;
-		 System.out.println("删除权限====="+resultAnd);//0          0111|1000  = 0000(真真为真, 真假为假, 假假为假)
+		 System.out.println("删除权限====="+resultAnd);//0          0111&1000  = 0000(真真为真, 真假为假, 假假为假)
 		 
 		 
 	 }   
