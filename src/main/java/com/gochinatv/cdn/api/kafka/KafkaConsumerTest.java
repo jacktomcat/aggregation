@@ -23,8 +23,8 @@ public class KafkaConsumerTest {
     public static void main(String[] args){
         Properties props = new Properties();
         props.put("group.id", "kafka01");
-        props.put("zookeeper.connect", "192.168.2.150:2181");
-        props.put("bootstrap.servers", "192.168.2.150:9092");
+        props.put("zookeeper.connect", Config.ZK);
+        props.put("bootstrap.servers", Config.BROKERS);
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
