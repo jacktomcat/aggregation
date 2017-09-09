@@ -2,12 +2,8 @@ package com.gochinatv.cdn.api.redis;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import redis.clients.jedis.*;
-import redis.clients.util.Hashing;
-import redis.clients.util.MurmurHash;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  *  redis 分片
