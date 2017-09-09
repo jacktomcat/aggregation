@@ -2,6 +2,7 @@ package com.gochinatv.cdn.api.redis;
 
 import java.time.Duration;
 
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -33,6 +34,7 @@ public class RedisConnection {
 			byte[] value = ("{'name':'zhagnsan','sex':'1','age':'100','uri':'http://www.baidu.com'}:").getBytes();
 			jedis.set(key, value);
 		}
+		jedis.close();
 	}
 	
 	
@@ -43,13 +45,13 @@ public class RedisConnection {
 	}
 	
 	private static JedisPool buildPool() {
-		final JedisPoolConfig poolConfig = buildPoolConfig();
+		final GenericObjectPoolConfig poolConfig = buildPoolConfig();
 		JedisPool jedisPool = new JedisPool(poolConfig, "localhost");
 		return jedisPool;
 	}
 	
-	private static JedisPoolConfig buildPoolConfig() {
-	    final JedisPoolConfig poolConfig = new JedisPoolConfig();
+	public static GenericObjectPoolConfig buildPoolConfig() {
+	    final GenericObjectPoolConfig poolConfig = new JedisPoolConfig();
 	    poolConfig.setMaxTotal(128);
 	    poolConfig.setMaxIdle(128);
 	    poolConfig.setMinIdle(16);
