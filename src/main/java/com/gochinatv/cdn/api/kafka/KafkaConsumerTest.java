@@ -22,8 +22,8 @@ public class KafkaConsumerTest {
 
     public static void main(String[] args){
         Properties props = new Properties();
-        props.put("group.id", "kafka01");
-        props.put("zookeeper.connect", Config.ZK);
+        props.put("group.id", "kafka02");
+        //props.put("zookeeper.connect", Config.ZK);
         props.put("bootstrap.servers", Config.BROKERS);
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");
