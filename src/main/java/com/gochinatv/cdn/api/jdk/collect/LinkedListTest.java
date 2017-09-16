@@ -3,6 +3,8 @@ package com.gochinatv.cdn.api.jdk.collect;
 import org.junit.Test;
 
 import java.util.LinkedList;
+import java.util.Stack;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  *
@@ -16,9 +18,45 @@ public class LinkedListTest {
 
 
     @Test
-    public void before() {
+    public void testLinkedList() {
         LinkedList<String> list = new LinkedList<>();
+        list.addFirst("test1");
+        list.addLast("addLast");
+
+        list.add("add");//添加元素到队尾
+        list.push("push");//添加到队头
+        list.offer("offer");//添加到链表队尾
+
+        String element = list.element();//获取头元素,但是不删除
+        System.out.println(element);//push
+
+        String peek = list.peek();//获取头元素,但是不删除
+        System.out.println(peek);//push
+
+        String poll = list.poll();//获取头元素,并删除
+        System.out.println(poll);//push
+
+        String pop = list.pop();//从头取出返回,并删除
+        System.out.println(pop);//test1
+
     }
+
+    @Test
+    public void testStack(){
+        Stack<String> stack = new Stack();
+        stack.add("add");
+        stack.push("push");
+        stack.pop();
+
+    }
+
+    @Test
+    public void testCopyOnWriteArrayList(){
+        CopyOnWriteArrayList<String> data = new CopyOnWriteArrayList<>();
+
+    }
+
+
 
 
 }
