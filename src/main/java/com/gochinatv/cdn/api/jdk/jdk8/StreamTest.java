@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 
 /**
@@ -64,6 +65,8 @@ public class StreamTest {
         result.add("mysql");
 
         result.stream().forEach(System.out::println);
+        
+       // result.stream().map(mapper)
 
         //findFirst 首元素
         System.out.println("findFirst: " +result.stream().findFirst().get());
@@ -117,6 +120,7 @@ public class StreamTest {
         System.out.println("reduce sum : " + reduce);
         System.out.println("reduce len1 len2 : " + reduce1.getAsInt());
 
+        Stream.of("chaimm","peter","john").forEach(result::add);
 
         //Collectors 用法
         //string to map

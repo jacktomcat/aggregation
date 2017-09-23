@@ -60,16 +60,22 @@ public class BlockingQueueTest02 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        String take = queue.take();
-        System.out.println("take:"+take + ",size:"+queue.size());
-
+        
+		try {
+			//检索并删除此队列的头,如果没有可用元素则一直阻塞,直到有可用元素,阻塞通过lock来实现
+			String take = queue.take();
+			 System.out.println("take:"+take + ",size:"+queue.size());
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+       
         //获取,但是不移除头部元素
         String peek = queue.peek();
         System.out.println("peek:"+peek + ",size:"+queue.size());
 
         //Retrieves, but does not remove, the head of this queue.
         // This method differs from peek only in that it throws an exception if this queue is empty.
+        //获取,但是不移除头部元素,如果没有抛出异常
         String element = queue.element();
         System.out.println("element:"+element + ",size:"+queue.size());
 
