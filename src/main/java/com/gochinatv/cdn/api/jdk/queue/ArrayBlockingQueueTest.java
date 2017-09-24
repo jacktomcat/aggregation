@@ -1,29 +1,24 @@
 package com.gochinatv.cdn.api.jdk.queue;
 
-
 import org.junit.Test;
 
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
-
 
 /**
  * http://286.iteye.com/blog/2297295
- *
  * http://www.infoq.com/cn/articles/java-blocking-queue
- * 
  * @author jacktomcat
  *
  */
-public class BlockingQueueTest {
+public class ArrayBlockingQueueTest {
 
 
     @Test
-    public void linkedBlockQueueTest() {
+    public void arrayBlockQueueTest() {
 
-        //无界队列,最大值是  Integer.MAX_VALUE
-        BlockingQueue<String> queue = new LinkedBlockingQueue<>(10);
+        BlockingQueue<String> queue = new ArrayBlockingQueue<>(10);
 
         queue.add("aaa");
         queue.add("bbb");
@@ -61,23 +56,26 @@ public class BlockingQueueTest {
             e.printStackTrace();
         }
 
+        try {
+            //检索并删除此队列的头,如果没有可用元素则一直阻塞,直到有可用元素,阻塞通过lock来实现
+            String take = queue.take();
+            System.out.println("take:"+take + ",size:"+queue.size());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         //获取,但是不移除头部元素
         String peek = queue.peek();
         System.out.println("peek:"+peek + ",size:"+queue.size());
 
         //Retrieves, but does not remove, the head of this queue.
         // This method differs from peek only in that it throws an exception if this queue is empty.
+        //获取,但是不移除头部元素,如果没有抛出异常
         String element = queue.element();
         System.out.println("element:"+element + ",size:"+queue.size());
 
         boolean contains = queue.contains("queue03");
         System.out.println("contains:"+contains + ",size:"+queue.size());
 
-
-
-
-
     }
-
-
 }
