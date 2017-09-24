@@ -14,8 +14,6 @@ public class SynchronousQueueTest {
     @Test
     public void synchronousTest() {
 
-
-
         AbstractQueue<String> queue = new SynchronousQueue<>();
 
 
