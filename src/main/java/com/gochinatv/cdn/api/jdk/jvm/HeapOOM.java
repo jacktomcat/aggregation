@@ -13,8 +13,8 @@ package com.gochinatv.cdn.api.jdk.jvm;
  *
  *
  * @author jack
- * -Xms10m -Xmx10m -Xss160k -XX:NewSize=5m -XX:+PrintHeapAtGC -XX:+PrintGCTimeStamps -XX:+PrintGCDetails -XX:+PrintGCDateStamps
- *  -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/Users/zhuhuihui
+ * -Xms20m -Xmx20m -Xss160k -XX:NewSize=5M -XX:MaxNewSize=6M -XX:+PrintHeapAtGC -XX:+PrintGCTimeStamps -XX:+PrintGCDetails 
+ * -XX:+PrintGCDateStamps -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=D:/logs
  *
  * java -X 非标准输出
  */
