@@ -13,7 +13,7 @@ package com.gochinatv.cdn.api.jdk.jvm;
  *
  *
  * @author jack
- * -Xms2m -Xmx2m -Xss160k -XX:+PrintHeapAtGC -XX:+PrintGCTimeStamps -XX:+PrintGCDetails -XX:+PrintGCDateStamps
+ * -Xms10m -Xmx10m -Xss160k -XX:NewSize=5m -XX:+PrintHeapAtGC -XX:+PrintGCTimeStamps -XX:+PrintGCDetails -XX:+PrintGCDateStamps
  *  -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/Users/zhuhuihui
  *
  * java -X 非标准输出
@@ -23,8 +23,8 @@ public class HeapOOM {
 	public static void main(String[] args) {
 		int number = 0;
 		while(true){
-			//byte[] b = new byte[1024*1024*5];
-			//System.out.println(++number);
+			byte[] b = new byte[1024*1024*20];
+			System.out.println(b.length);
 		}
 	}
 }

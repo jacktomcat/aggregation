@@ -11,9 +11,9 @@ public class MonitorLock {
     public static void main(String[] args) {
 
         MonitorLock lock = new MonitorLock();
-
         for (int i = 0; i < 5; i++) {
             MonitorTestLock testLock = new MonitorTestLock(lock);
+            //Thread thread = new Thread(testLock,MonitorLock.class.getName()+"-"+i+"-");
             Thread thread = new Thread(testLock,"线程:"+(i+1));
             thread.start();
         }
