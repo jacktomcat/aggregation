@@ -24,7 +24,7 @@ public class ThreadStop03 extends Thread {
         System.out.println("在50秒之内按任意键中断线程!");
         //System.in.read();
 
-        thread.interrupt();
+        thread.interrupt();//打断线程
         System.out.println(thread.isInterrupted());//true
         thread.join();
         System.out.println("线程已经退出!");
