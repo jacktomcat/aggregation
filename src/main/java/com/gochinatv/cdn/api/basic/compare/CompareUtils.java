@@ -18,11 +18,11 @@ public class CompareUtils {
 
 	
 	public static void main(String[] args) {
-		Book b3 = new Book(10002, "水浒传", 100.8);  
-		Book b1 = new Book(10000, "红楼梦", 150.86); 
-		Book b2 = new Book(10001, "三国演义", 99.68);  
-	    Book b5 = new Book(10004, "天龙八部", 10.4); 
-	    Book b4 = new Book(10003, "西游记", 120.8);  
+		Book b3 = new Book(10002, "ab水浒传", 100.8);  
+		Book b1 = new Book(10000, "a红楼梦", 150.86); 
+		Book b2 = new Book(10001, "b三国演义", 99.68);  
+	    Book b5 = new Book(10004, "c天龙八部", 10.4); 
+	    Book b4 = new Book(10003, "ac西游记", 100.8);  
 		
 	    List<Book> bookList = new ArrayList<>();
 	    bookList.add(b1);
@@ -53,7 +53,7 @@ public class CompareUtils {
 
 
 
-class Book implements Comparable{
+class Book implements Comparable<Book>{
 	public int id;// 编号
 	public String name;// 名称
 	public double price; // 价格
@@ -90,9 +90,29 @@ class Book implements Comparable{
 	}
 
 	
-	public int compareTo(Object obj) {// Comparable接口中的方法  
-        Book b = (Book) obj;  
-        return this.id - b.id; // 按书的id比较大小，用于默认排序  
+	/**
+	 * 1) 如果要按照升序排序
+	 * 	o1 小于o2，返回-1（负数），相等返回0， o1 大于o2 返回1（正数） 
+	 * 
+	 * 2) 如果要按照降序排序 
+	 *	o1 小于o2，返回1（正数），相等返回0， o1 大于o2返回-1（负数） 
+	 * 
+	 */
+	public int compareTo(Book o) {// Comparable接口中的方法  
+	   //先按价格升序,然后按照名词升序
+       if(this.price>o.price){
+    	   return 1;
+       }
+       if(this.price<o.price){
+    	   return -1;
+       }
+       if(this.name.compareTo(o.name)<0){
+    	   return -1;
+       }
+       if(this.name.compareTo(o.name)>0){
+    	   return 1;
+       }
+       return 0;
     }
 
 	@Override
