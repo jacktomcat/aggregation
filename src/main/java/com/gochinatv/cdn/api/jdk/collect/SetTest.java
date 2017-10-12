@@ -2,10 +2,7 @@ package com.gochinatv.cdn.api.jdk.collect;
 
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by jacktomcat on 17/9/24.
@@ -25,6 +22,17 @@ public class SetTest {
 
         System.out.println(set.size());
 
+        for (String s : set) {
+            System.out.println(s);
+        }
+
+        List<String> retain = new ArrayList<>();
+        retain.add("2");
+        retain.add("3");
+
+        set.retainAll(retain);//仅仅保留指定集合的这些元素
+
+        System.out.println("==retain 之后==");
         for (String s : set) {
             System.out.println(s);
         }

@@ -7,7 +7,6 @@ package com.gochinatv.cdn.api.basic.string;
  */
 public class StringTest {
 
-
      public static void  main(String[] args){
          String name = new String("Ext");
          String name1 = "abc";

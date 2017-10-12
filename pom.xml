@@ -275,6 +275,20 @@
 		    <artifactId>hystrix-metrics-event-stream</artifactId>
 		    <version>1.5.13</version>
 		</dependency> -->
+
+		<dependency>
+			<groupId>io.zipkin.brave</groupId>
+			<artifactId>brave</artifactId>
+			<version>4.8.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.zipkin.brave</groupId>
+			<artifactId>brave-core</artifactId>
+			<version>4.8.0</version>
+		</dependency>
+
+
 	</dependencies>
 	
 	<repositories>
