@@ -46,8 +46,6 @@ public class StreamTest {
         Map<Boolean, List<User>> partition = userList.stream().collect(Collectors.partitioningBy(user -> user.getId() > 5));
         System.out.println(partition);
 
-        userList.stream().collect(Collectors.partitioningBy(user -> user.getId() > 5,));
-
     }
 
 }
