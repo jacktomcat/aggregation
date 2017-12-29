@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+
+	<root level="DEBUG">
+	    <appender-ref ref="STDOUT" />
+	</root>
+
+	<!--以logger为主进行打印,如果additivity为true,示当前logger的appender-ref和rootLogger的appender-ref都有效-->
+	<!--如果为false,表示只用当前logger的appender-ref-->
+    <logger name="com.gochinatv.cdn.api.basic.logger.LogLevelTest" level="INFO" additivity="true">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+</configuration>
