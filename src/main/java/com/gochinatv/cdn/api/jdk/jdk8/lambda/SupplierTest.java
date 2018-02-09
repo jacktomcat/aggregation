@@ -5,30 +5,37 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *  Supplier 使用
+ * @author tingyun
+ *
+ */
 public class SupplierTest {
 
 	
 	public static void main(String[] args) {
 		
-		//getList(SupplierTest::params);
+		getList(SupplierTest::params);
 	}
 	
 	public static void getList(DataSupplier supplier){
-		List<String> output = supplier.getData("");
+		List<String> output = supplier.getData("test:5");
 		output.forEach(v->{
 			System.out.println(v);
 		});
 	}
 	
 	
-	public static Map<String, String> params(String key){
+	public static List<String> params(String key){
 		Map<String, List<String>> paramsMap = new HashMap<>(); 
 		
-		/*List<String,list> data = new ArrayList<>();
-		data.add("test1");
-		data.add("test2");
-		data.add("test3");
-		data.add("test4");*/
-		return null;
+		for(int i=0;i<10;i++){
+			List<String> data = new ArrayList<>(10);
+			paramsMap.putIfAbsent("test:"+i, data);
+			for(int j=0;j<10;j++){
+				data.add("test:"+i+",value:"+j);
+			}
+		}
+		return paramsMap.get(key);
 	}
 }
