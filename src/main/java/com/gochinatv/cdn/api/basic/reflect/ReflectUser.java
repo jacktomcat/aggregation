@@ -26,4 +26,9 @@ public class ReflectUser {
     public void setName(String name) {
         this.name = name;
     }
+
+
+    private String getAddress(){
+        return "beijing";
+    }
 }
