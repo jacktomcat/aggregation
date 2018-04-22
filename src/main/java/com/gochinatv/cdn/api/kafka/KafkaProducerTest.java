@@ -1,10 +1,14 @@
 package com.gochinatv.cdn.api.kafka;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+
+import com.alibaba.fastjson.JSONObject;
 
 
 /**
@@ -30,20 +34,33 @@ public class KafkaProducerTest {
 		 props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 		 props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer"); 
 
-		 Producer<String, String> producer = new KafkaProducer<>(props);
-		 int i = 0;
 		 
 		 //case 1:
 		 //没有任何分区，默认1个分区，发送消息
-        while(i<=10000){
-        	 //Thread.sleep(1000L);
-		     producer.send(new ProducerRecord<String, String>("q-newlens-appserver-metrics-persist", Integer.toString(i), Integer.toString(i)+"-jackjboss"));
-		     System.out.println("================send============="+i);
-		     i = i+1;
-			producer.flush();
+       for(int i=1;i<10;i++){
+    	   	 //TOPN
+    	     Producer<String, String> producer = new KafkaProducer<>(props);
+        	 JSONObject object = new JSONObject();
+        	 object.put("timestamp", new Date().getTime()/1000);
+        	 object.put("data_type", "ACT");
+        	 object.put("biz_system_id", 1);
+        	 object.put("application_id", i%3==0?1:i%3);
+        	 object.put("instance_id", i%5==0?1:i%5);
+        	 object.put("action_type", "BG");
+        	 object.put("action_id", i);
+        	 object.put("count", (60*i-10));
+        	 object.put("resp_time", (75*i-15));
+        	 object.put("cpu_usage", (20*i-6));
+        	 object.put("memory_usage", (24*i-5));
+        	 object.put("success_count", (70*i-20));
+        	 System.out.println(object.toJSONString());
+		     producer.send(new ProducerRecord<String, String>("ty-svr-action-druid-messages", object.toJSONString()));
+			 producer.flush();
+			 producer.close();
+			Thread.sleep(1000L);
 			//producer.close();
 		 }
-        producer.close();
+        
 		 
 		 //case 2
 		 //发送带时间戳的message
@@ -66,5 +83,5 @@ public class KafkaProducerTest {
 		 //producer.close();
 		 
 	}
-	
+
 }
