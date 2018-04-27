@@ -18,7 +18,7 @@ import com.alibaba.fastjson.JSONObject;
  * 
  *
  */
-public class KafkaProducerTestTemp {
+public class KafkaProducerAction {
    
 	public static void main(String[] args) throws Exception {
 		 Properties props = new Properties();
