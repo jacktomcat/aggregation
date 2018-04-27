@@ -18,6 +18,7 @@ public class StreamTest {
             User user = new User(i, "jack"+i,i+20);
             userList.add(user);
         }
+
         //userList.forEach((user) -> System.out.println(user));
 
         userList.stream().limit(2).skip(1).collect(Collectors.toList()).forEach(user-> System.out.println(user));
