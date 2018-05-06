@@ -2,6 +2,9 @@ package com.gochinatv.cdn.api.guava.concurrent;
 
 import com.google.common.util.concurrent.Monitor;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  *
  * 源码上这样定义：A synchronization abstraction supporting waiting on arbitrary boolean conditions，
@@ -70,7 +73,8 @@ public class MonitorTest {
 	       monitor.enterWhen(put); //Guard(形如Condition)，不满足则阻塞，而且我们并没有在Guard进行任何通知操作
 	       try {
 	    	   value = item;
-	       } finally {
+			   System.out.println("进入put方法");
+		   } finally {
 	           monitor.leave();
 	       }
 	   }
@@ -80,10 +84,34 @@ public class MonitorTest {
 	       monitor.enterWhen(get); //Guard(形如Condition)，不满足则阻塞，而且我们并没有在Guard进行任何通知操作
 	       try {
 	    	   result = value;
+			   System.out.println("进入get方法");
+			   value = null;
 	       } finally {
 	           monitor.leave();
 	       }
 	       return result;
 	   }
-	   
+
+	public static void main(String[] args) {
+		ExecutorService executorService = Executors.newFixedThreadPool(10);
+		MonitorTest test = new MonitorTest();
+		for(int i=0; i<100;i++){
+			executorService.submit(() -> {
+				try {
+					test.get();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			});
+			executorService.submit(() -> {
+				try {
+					test.put("张三");
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			});
+		}
+		executorService.shutdown();
+	}
+
 }
