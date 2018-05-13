@@ -2,7 +2,6 @@ package com.gochinatv.cdn.api.okhttp;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
 import javax.net.ssl.*;
 import java.io.IOException;
@@ -147,14 +146,14 @@ public class Naike {
 
 
     public static String postJson(String url,JSONObject object){
-        ObjectMapper mapper = new ObjectMapper();
+        /*ObjectMapper mapper = new ObjectMapper();*/
         String bodyString = null;
-        try {
+        /*try {
             bodyString = mapper.writeValueAsString(object);
             System.out.println("格式化后的json为:"+bodyString);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-        }
+        }*/
 
         RequestBody body = RequestBody.create(JSON,bodyString);
 
