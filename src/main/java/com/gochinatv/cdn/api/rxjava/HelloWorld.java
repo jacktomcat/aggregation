@@ -5,6 +5,10 @@ import io.reactivex.schedulers.Schedulers;
 
 import java.util.concurrent.TimeUnit;
 
+
+/**
+ * https://github.com/jhusain/learnrxjava/blob/master/src/main/java/learnrxjava/examples/HelloWorld.java
+ */
 public class HelloWorld {
 
 
