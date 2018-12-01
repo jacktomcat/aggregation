@@ -31,8 +31,8 @@ public class KafkaPartitionConsumerTest {
 		ExecutorService executorService = Executors.newFixedThreadPool(1);
 		
 		Properties props = new Properties();
-        props.put("group.id", "test01");
-        props.put("zookeeper.connect", Config.ZK);
+        props.put("group.id", "test02");
+        //props.put("zookeeper.connect", Config.ZK);
         props.put("bootstrap.servers", Config.BROKERS);
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");
@@ -49,7 +49,7 @@ public class KafkaPartitionConsumerTest {
 	     TopicPartition partition2 = new TopicPartition("spark-test-proc", 2);
 	     TopicPartition partition3 = new TopicPartition("spark-test-proc", 3);
 	     
-	     List<TopicPartition> partitions = Lists.newArrayList(partition1);
+	     List<TopicPartition> partitions = Lists.newArrayList(partition0,partition1,partition2,partition3);
 	     consumer.assign(partitions);
 	    
 	    	 executorService.submit(()->{
@@ -61,14 +61,14 @@ public class KafkaPartitionConsumerTest {
 	    	     }
 		     });
 	    	 
-	    	 executorService.submit(()->{
+	    	 /*executorService.submit(()->{
 	    		 while (true) {
 	    	         ConsumerRecords<String, String> records = consumer.poll(100);
 	    	         for (ConsumerRecord<String, String> record : records){
 	    	             System.out.printf(Thread.currentThread().getName()+ "offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
 	    	         }
 	    	     }
-		     });
+		     });*/
 		 
 	}
 	
