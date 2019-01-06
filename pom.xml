@@ -344,6 +344,12 @@
 			<version>0.1.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.taobao.text</groupId>
+			<artifactId>text-ui</artifactId>
+			<version>0.0.2</version>
+		</dependency>
+
 	</dependencies>
 	
 	<repositories>
