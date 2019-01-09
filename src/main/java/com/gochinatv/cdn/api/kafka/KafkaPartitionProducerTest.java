@@ -30,14 +30,15 @@ public class KafkaPartitionProducerTest {
 		// case 3
 		// 需要使用命令行创建topic并且指定分区数，同时发送消息至分区
 		for (int i=0; i < 100; i++) {
-			if(counter+1%100==0)
-				Thread.sleep(1000L);
+			//if(counter+1%100==0)
+			//	Thread.sleep(1000L);
 
-			producer.send(new ProducerRecord<String, String>("spark-test-proc", 0, Integer.toString(i), "partition-0-jackjboss-"+i));
-			producer.send(new ProducerRecord<String, String>("spark-test-proc", 1, Integer.toString(i), "partition-1-jackjboss-"+i));
-			producer.send(new ProducerRecord<String, String>("spark-test-proc", 2, Integer.toString(i), "partition-2-jackjboss-"+i));
-			producer.send(new ProducerRecord<String, String>("spark-test-proc", 3, Integer.toString(i), "partition-3-jackjboss-"+i));
+			//producer.send(new ProducerRecord("spark-test-proc","zhuhh-"+i));
+			int partition = (i%4);
+			producer.send(new ProducerRecord<String, String>("spark-test-proc1", partition, Integer.toString(i), "partition-"+partition+"-jackjboss-"+i));
 			counter = counter + 1;
+			//producer.flush();
+			System.out.println("发送消息成功");
 		}
 		producer.flush();
 		producer.close();

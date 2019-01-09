@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by jacktomcat on 17/12/17.
@@ -43,6 +44,11 @@ public class StreamTest {
 
         Map<Integer, List<User>> groupingBy = userList.stream().collect(Collectors.groupingBy(User::getId));
         System.out.println(groupingBy);
+
+
+        userList.stream().flatMap(user-> Stream.of(user,user)).forEach(user -> {
+            System.out.println(user.getId()+"-----");
+        });
 
         Map<Boolean, List<User>> partition = userList.stream().collect(Collectors.partitioningBy(user -> user.getId() > 5));
         System.out.println(partition);
