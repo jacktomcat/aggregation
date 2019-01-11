@@ -39,7 +39,6 @@ public final class HealthCheck {
         int size = resource.getMachines().size();
 
 
-
     }
 
 
