@@ -10,6 +10,8 @@ public interface DataSupplier {
 	 * @param key
 	 * @return
 	 */
-	public List<String> getData(String key); 
+	public List<String> getData(String key);
+
+	//public abstract void run(String text);
 	
 }

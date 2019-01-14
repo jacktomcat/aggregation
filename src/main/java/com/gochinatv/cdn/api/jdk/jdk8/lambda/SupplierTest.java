@@ -23,11 +23,13 @@ public class SupplierTest {
 		output.forEach(v->{
 			System.out.println(v);
 		});
+
 	}
+
 	
 	
 	public static List<String> params(String key){
-		Map<String, List<String>> paramsMap = new HashMap<>(); 
+		Map<String, List<String>> paramsMap = new HashMap<>();
 		
 		for(int i=0;i<10;i++){
 			List<String> data = new ArrayList<>(10);
