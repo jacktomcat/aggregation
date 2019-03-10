@@ -1,3 +1,4 @@
+/*
 package com.gochinatv.cdn.api.vm;
 
 import com.sun.tools.attach.AttachNotSupportedException;
@@ -5,12 +6,14 @@ import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
 import java.util.Properties;
 
+*/
 /**
  * ${DESCRIPTION}
  *
  * @auhtor jacktomcat
  * @create 2018-12-03 下午9:31
- */
+ *//*
+
 public class VirtualMachineTest {
 
 
@@ -41,3 +44,4 @@ public class VirtualMachineTest {
 
     }
 }
+*/

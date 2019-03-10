@@ -134,7 +134,6 @@ public class LockSupportTest {
 	/**如果给定线程的许可尚不可用，则使其可用。**/
 	//static void unpark(Thread thread)
 
-
 	public static void main(String[] args) {
 
 		//获取当前线程

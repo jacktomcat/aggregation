@@ -1,8 +1,5 @@
 package com.gochinatv.cdn.api.jdk.jvm;
 
-import com.google.common.base.Stopwatch;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * ${DESCRIPTION}
@@ -12,9 +9,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class PermGenTest {
 
-
     private static final int _1M = 1024 * 1024;
+
     public static void main(String[] args) throws InterruptedException {
+
+
 
         byte[] s0 = new byte[2 * _1M];
         byte[] s1 = new byte[2 * _1M];
