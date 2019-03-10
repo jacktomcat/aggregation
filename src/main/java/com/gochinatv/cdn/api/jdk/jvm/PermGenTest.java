@@ -1,5 +1,9 @@
 package com.gochinatv.cdn.api.jdk.jvm;
 
+import com.google.common.base.Stopwatch;
+
+import java.util.concurrent.TimeUnit;
+
 /**
  * ${DESCRIPTION}
  *
@@ -23,6 +27,7 @@ public class PermGenTest {
         // 新增一个1M的内存，由eden去进行担保
         // 此时再新增一个7M的对象,将导致OOM的发生，Eden区无法存储。eden仍然分担3M的内容，而剩下的15M老年代担保失败，触发Full GC，GC后仍然无法存储，发生OOM
         byte[] s6 = new byte[7 * _1M];
+
     }
 
 

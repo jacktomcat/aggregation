@@ -34,8 +34,9 @@ public class RateLimiterTest {
     public void testWithRateLimiter() {
         Long start = System.currentTimeMillis();
         RateLimiter limiter = RateLimiter.create(10.0); // 每秒不超过10个任务被提交,平均每个任务0.1秒
+        int acquire = 2;
         for (int i = 0; i < 20; i++) {
-            double acquire = limiter.acquire();// 请求RateLimiter, 超过permits会被阻塞
+            limiter.acquire(acquire);// 请求RateLimiter, 超过permits会被阻塞
 
             System.out.println("等待时间:" + acquire+ ", call execute.." + i + ", current time:"+System.currentTimeMillis());
 
