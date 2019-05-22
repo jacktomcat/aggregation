@@ -22,6 +22,10 @@ package com.gochinatv.cdn.api.algorithm;
       两个操作数的位中，相同则结果为0，不同则结果为1
 
  */
+
+/**
+ * http://www.wolfbe.com/detail/201611/381.html
+ */
 public class SnowFlake {
 
     /**
