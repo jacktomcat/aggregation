@@ -1,3 +1,4 @@
+/*
 package com.gochinatv.cdn.api.elasticsearch;
 
 import java.net.InetSocketAddress;
@@ -166,3 +167,4 @@ public class ElasticSearchTest {
 	}
 
 }
+*/
