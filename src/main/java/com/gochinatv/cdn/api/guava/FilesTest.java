@@ -18,12 +18,12 @@ public class FilesTest {
 
     @Test
     public void filesTest() {
-        String fullPath = "/Users/zhuhuihui/WorkBook/Markdown/zookeeper/zookeeper.md";
+        String fullPath = "/Users/WorkBook/Markdown/zookeeper/zookeeper.md";
         String extension = Files.getFileExtension(fullPath);
         System.out.println(extension);
 
-        String fileName = Files.getNameWithoutExtension(fullPath);
-        System.out.println(fileName);
+        //String fileName = Files.getNameWithoutExtension(fullPath);
+        //System.out.println(fileName);
 
         try {
             List<String> rows = Files.readLines(new File(fullPath), Charset.forName("UTF-8"));
@@ -36,7 +36,7 @@ public class FilesTest {
             e.printStackTrace();
         }
 
-        String newFile = "/Users/zhuhuihui/WorkBook/Markdown/zookeeper/zookeeper-temp.md";
+        String newFile = "/Users/WorkBook/Markdown/zookeeper/zookeeper-temp.md";
         try(BufferedWriter bufferedWriter = Files.newWriter(new File(newFile), Charset.forName("UTF-8"))){
 
             bufferedWriter.write("#<center>Zookeeper</center>");

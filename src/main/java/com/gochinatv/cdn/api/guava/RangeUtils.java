@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-import com.google.common.base.Stopwatch;
+import org.apache.commons.lang3.time.StopWatch;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Range;
@@ -22,22 +22,23 @@ public class RangeUtils {
 		
 		List<Object> list = Lists.newArrayList();
 		BlockingQueue<Object> queue = null;
-		Stopwatch stopwatch = Stopwatch.createStarted();
+		StopWatch stopwatch = StopWatch.createStarted();
 		try {
 			Thread.sleep(1000L);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		long time = stopwatch.stop().elapsed(TimeUnit.MILLISECONDS);
+		long time = stopwatch.getTime(TimeUnit.MILLISECONDS);
 		System.out.println(time);
 
 		list.forEach(obj -> {
 			System.out.println(obj.toString()); 
 		});
-		
-		Range<Integer> closed = Range.closedOpen(1, 4);
+
+		org.apache.commons.lang3.Range<Integer> between = org.apache.commons.lang3.Range.between(1, 4);
+		/*Range<Integer> closed = Range.closedOpen(1, 4);
 		System.out.println("====="+closed.lowerBoundType()+"===="+closed.upperBoundType());
-		System.out.println("====="+closed.lowerEndpoint()+"===="+closed.upperEndpoint());
+		System.out.println("====="+closed.lowerEndpoint()+"===="+closed.upperEndpoint());*/
 
 
 	}

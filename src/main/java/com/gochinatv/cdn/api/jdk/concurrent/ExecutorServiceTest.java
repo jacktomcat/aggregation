@@ -3,7 +3,7 @@ package com.gochinatv.cdn.api.jdk.concurrent;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.google.common.base.Stopwatch;
+import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
 
@@ -56,7 +56,7 @@ public class ExecutorServiceTest {
 
 
 		CountDownLatch countDownLatch = new CountDownLatch(100);
-		Stopwatch watch  = Stopwatch.createStarted();
+		StopWatch watch  = StopWatch.createStarted();
 		for (int i = 0; i < 100; i++) {
 			threadPool.execute(new Runnable() {
 				@Override
@@ -92,7 +92,7 @@ public class ExecutorServiceTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("执行完毕耗时"+watch.elapsed(TimeUnit.SECONDS));
+		System.out.println("执行完毕耗时"+watch.getTime(TimeUnit.SECONDS));
 
 		//threadPool.shutdown();
 		/*try {

@@ -37,11 +37,11 @@ public class CollectionsTest {
 		 /**
 		  * 排列组合
 		  */
-		 Collection<List<String>> orderedPermutations = Collections2.orderedPermutations(data);
+		 /*Collection<List<String>> orderedPermutations = Collections2.orderedPermutations(data);
 		 System.out.println(orderedPermutations.size());
 		 orderedPermutations.forEach(c->{
 			 c.forEach(v->System.out.println(v));
-		 });
+		 });*/
 		 
 	 }
 }

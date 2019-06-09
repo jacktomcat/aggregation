@@ -15,7 +15,7 @@ import java.util.Map;
 public class BloomFilterTest {
 
 
-    private static int size = 10000000;
+    /*private static int size = 10000000;
 
     private static BloomFilter<Integer> bloomFilter = BloomFilter.create(Funnels.integerFunnel(), size);
 
@@ -59,6 +59,6 @@ public class BloomFilterTest {
 
         System.out.println("程序运行时间： " + (endTime - startTime) + "纳秒");
 
-    }
+    }*/
 
 }

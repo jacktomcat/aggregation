@@ -1,7 +1,6 @@
 package com.gochinatv.cdn.api.okhttp;
 
 import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import okhttp3.*;
 import javax.net.ssl.*;
 import java.io.IOException;

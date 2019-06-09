@@ -32,9 +32,10 @@ public class EsHighLevelClient {
 
 
     private static RestHighLevelClient initElasticSearchClient() {
-        HttpHost[] httpHosts = Arrays.stream(esUrl.split(",")).map(HttpHost::create).toArray(HttpHost[]::new);
+        /*HttpHost[] httpHosts = Arrays.stream(esUrl.split(",")).map(HttpHost::create).toArray(HttpHost[]::new);
         return new RestHighLevelClient(RestClient.builder(httpHosts).setRequestConfigCallback(
                 requestConfigBuilder -> requestConfigBuilder.setConnectTimeout(1300).setSocketTimeout(100).setConnectionRequestTimeout(200)
-        ).setMaxRetryTimeoutMillis(10000));
+        ).setMaxRetryTimeoutMillis(10000));*/
+        return null;
     }
 }
